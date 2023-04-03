@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/kephr/Documents_locaux/Programmation/Poly/INF1015/Projet/out/build/x64-Debug/config.tests/static_link_order/CMakeFiles/static_link_order_test.dir/embed.manifest"

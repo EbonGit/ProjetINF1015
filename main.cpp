@@ -1,4 +1,10 @@
 ﻿#include <QApplication>
+#include <vector>
+#include <iostream>
+#include <iomanip>
+#include "Case.h"
+
+using namespace std;
 
 #if __has_include("bibliotheque_cours.hpp")
 #include "bibliotheque_cours.hpp"
@@ -25,11 +31,44 @@ void initialiserBibliothequeCours([[maybe_unused]] int argc, [[maybe_unused]] ch
 	//NOTE: C'est normal que la couverture de code dans l'Explorateur de tests de Visual Studio ne couvre pas la fin de cette fonction ni la fin du main après l'appel à cette fonction puisqu'il exécute uniquement les tests Google Test dans l'appel ci-dessus.
 }
 
+void afficherBoolTable(vector<vector<bool>> plateau) {
+	for (auto ligne : plateau) {
+		for (auto case_plateau: ligne) {
+			cout << setw(4) << case_plateau;
+		}
+		cout << endl;
+	}
+}
+
+void afficherTable(vector<Case> plateau) {
+	//for (auto ligne : plateau) {
+		//for (auto case_plateau : ligne) {
+		//}
+	//}
+}
+
+vector<vector<bool>> initPlateau() {
+	vector<vector<bool>> p;
+	for (size_t i = 0; i < 8; i++)
+	{
+		vector<bool> ligne;
+		for (size_t j = 0; j < 8; j++)
+		{
+			ligne.push_back(false);
+		}
+		p.push_back(ligne);
+	} 
+	return p;
+}
+
 int main(int argc, char *argv[])
 {
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
-	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
 
-	return app.exec();
+	vector<Case> plateau;
+	//vector<vector<bool>> plateau = initPlateau();
+	//afficher(plateau);
+
+	return 0;
 }
