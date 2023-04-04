@@ -39,8 +39,9 @@ int main(int argc, char *argv[])
 	Plateau plateau = Plateau();
 	Piece* p = new Piece();
 	Roi* r = new Roi();
-	plateau.get()[1][7].posseder(p);
-	plateau.get()[2][3].posseder(r);
+
+	plateau[1][7].posseder(p);
+	plateau[2][3].posseder(r);
 
 	plateau.afficher();
 	

@@ -11,6 +11,7 @@ public:
     void afficher() override;
     vector<vector<Case>>& get();
     void init();
+    vector<Case>& operator[](int i) { return cases_[i]; };
     
 private:
     vector<vector<Case>> cases_;
