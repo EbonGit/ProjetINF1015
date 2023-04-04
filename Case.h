@@ -1,6 +1,6 @@
 #pragma once
 #include "Affichable.h"
-#include "Piece.h"
+#include "Roi.h"
 class Case : public Affichable
 {
 public:

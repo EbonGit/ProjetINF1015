@@ -119,12 +119,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="Plateau.cpp" />
+    <ClCompile Include="Roi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Affichable.h" />
     <ClInclude Include="Case.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Plateau.h" />
+    <ClInclude Include="Roi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
