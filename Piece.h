@@ -5,11 +5,13 @@ class Piece :
     public Affichable
 {
 public:
-    Piece() = default;
-    virtual void afficher();
+    Piece(bool estBlanc) {
+        estBlanc_ = estBlanc;
+    };
+    virtual void afficher() = 0;
     virtual ~Piece() = default;
 protected:
-    bool couleur_;
+    bool estBlanc_;
     Strategie strategie_;
 };
 

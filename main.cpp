@@ -19,6 +19,8 @@ auto& cdbg = clog;
 #include "debogage_memoire.hpp"  //NOTE: Incompatible avec le "placement new", ne pas utiliser cette entête si vous utilisez ce type de "new" dans les lignes qui suivent cette inclusion.
 #endif
 
+const bool blanc = true;
+
 void initialiserBibliothequeCours([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
 	#ifdef BIBLIOTHEQUE_COURS_INCLUS
@@ -36,17 +38,18 @@ int main(int argc, char *argv[])
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
 	initialiserBibliothequeCours(argc, argv);
 
-	Plateau plateau = Plateau();
-	Piece* p = new Piece();
-	Roi* r = new Roi();
 
-	plateau[1][7].posseder(p);
-	plateau[2][3].posseder(r);
+	Plateau plateau = Plateau();
+	Roi* rb = new Roi(blanc);
+	Roi* rn = new Roi(!blanc);
+
+	plateau[2][3].posseder(rb);
+	plateau[5][2].posseder(rn);
 
 	plateau.afficher();
 
-	delete p;
-	delete r;
+	delete rb;
+	delete rn;
 
 	return 0;
 }

@@ -1,5 +1,11 @@
 #include "Roi.h"
 
 void Roi::afficher() {
-	std::cout << "\033[1;34mR\033[0m" << " ";
+	if (estBlanc_) {
+		std::cout << bleu_blanc << "R" << reset << " ";
+	}
+	else {
+		std::cout << bleu_noir << "R" << reset << " ";
+	}
+
 };
