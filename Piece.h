@@ -1,5 +1,6 @@
 #pragma once
 #include "Affichable.h"
+#include "Strategie.h"
 class Piece :
     public Affichable
 {
@@ -9,5 +10,6 @@ public:
     virtual ~Piece() = default;
 protected:
     bool couleur_;
+    Strategie strategie_;
 };
 

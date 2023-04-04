@@ -1,5 +1,4 @@
 #pragma once
-#include "Affichable.h"
 #include "Case.h"
 #include <vector>
 

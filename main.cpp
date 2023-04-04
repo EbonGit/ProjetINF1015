@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 	plateau[2][3].posseder(r);
 
 	plateau.afficher();
-	
+
 	delete p;
 	delete r;
 
