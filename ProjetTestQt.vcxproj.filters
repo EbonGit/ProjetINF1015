@@ -37,9 +37,21 @@
     <ClCompile Include="Case.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Affichable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plateau.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Affichable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plateau.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
