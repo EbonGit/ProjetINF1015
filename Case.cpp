@@ -6,6 +6,21 @@ Case::Case(int pos_x, int pos_y, bool estBlanc) {
 	estBlanc_ = estBlanc;
 }
 
+void Case::posseder(Piece* ptr) { 
+	piece_ = ptr; 
+	possedePiece_ = true;
+}
+
+void Case::deposseder() { 
+	piece_ = nullptr; 
+	possedePiece_ = false;
+}
+
 void Case::afficher() {
-	std::cout << estBlanc() << " ";
+	if (possedePiece_) {
+		piece_->afficher(); //afficher la pièce
+	}
+	else {
+		std::cout << estBlanc() << " ";
+	}
 }

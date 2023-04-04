@@ -37,6 +37,9 @@ int main(int argc, char *argv[])
 	initialiserBibliothequeCours(argc, argv);
 
 	Plateau plateau = Plateau();
+	Piece* p = new Piece();
+	plateau.get()[1][7].posseder(p);
+
 	plateau.afficher();
 	
 

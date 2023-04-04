@@ -6,10 +6,10 @@ Plateau::Plateau() {
 
 void Plateau::init() {
 	bool estBlanc = true;
-	for (size_t j = 0; j < 8; j++)
+	for (int j = 0; j < 8; j++)
 	{
 		vector<Case> ligne;
-		for (size_t i = 0; i < 8; i++)
+		for (int i = 0; i < 8; i++)
 		{
 			Case c = Case(i, j, estBlanc);
 			ligne.push_back(c);
