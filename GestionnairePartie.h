@@ -9,6 +9,7 @@ public:
 	GestionnairePartie(Plateau* plateau) { plateau_ = plateau; };
 	void appliquerStrategie();
 	void selectionner(Case* c) {caseCourante_ = c;};
+	
 	void calculDeplacement();
 	void calculEnnemi();
 	void afficherGrille(); //focntion temporaire pour aider à visualiser

@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 
 
 	Plateau plateau = Plateau();
+
 	Roi* rb = new Roi(blanc);
 	Roi* rn = new Roi(!blanc);
 
@@ -60,6 +61,7 @@ int main(int argc, char *argv[])
 	plateau.afficher();
 
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
+
 	gestionnaire.selectionner(&plateau[0][2]);
 	gestionnaire.appliquerStrategie(); //on selectionne la case [0][2] on récupère les cases correspondant au mode de déplacment de la pièce
 
