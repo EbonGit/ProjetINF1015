@@ -43,13 +43,23 @@ int main(int argc, char *argv[])
 	Roi* rb = new Roi(blanc);
 	Roi* rn = new Roi(!blanc);
 
+	Fou* fb = new Fou(blanc);
+	Fou* fn = new Fou(!blanc);
+
+	Tour* tb = new Tour(blanc);
+	Tour* tn = new Tour(!blanc);
+
 	plateau[2][3].posseder(rb);
 	plateau[5][2].posseder(rn);
 
+	plateau[4][6].posseder(fb);
+	plateau[0][2].posseder(fn);
+
+	plateau[7][3].posseder(tb);
+	plateau[1][7].posseder(tn);
+
 	plateau.afficher();
 
-	delete rb;
-	delete rn;
 
 	return 0;
 }

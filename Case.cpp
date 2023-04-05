@@ -6,6 +6,12 @@ Case::Case(int pos_x, int pos_y, bool estBlanc) {
 	estBlanc_ = estBlanc;
 }
 
+Case::~Case() {
+	if (piece_ != nullptr) {
+		delete piece_;
+	}
+}
+
 void Case::posseder(Piece* ptr) { 
 	piece_ = ptr; 
 	possedePiece_ = true;

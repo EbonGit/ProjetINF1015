@@ -52,6 +52,12 @@
     <ClCompile Include="Strategie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fou.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h">
@@ -70,6 +76,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Strategie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fou.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

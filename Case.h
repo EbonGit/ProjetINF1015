@@ -1,11 +1,15 @@
 #pragma once
 #include "Affichable.h"
 #include "Roi.h"
+#include "Fou.h"
+#include "Tour.h"
+
 class Case : public Affichable
 {
 public:
 	Case() = default;
 	Case(int, int, bool);
+	~Case();
 	int x, y;
 	bool estBlanc() { return estBlanc_; };
 	void afficher() override;
