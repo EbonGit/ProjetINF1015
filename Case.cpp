@@ -9,6 +9,7 @@ Case::Case(int pos_x, int pos_y, bool estBlanc) {
 Case::~Case() {
 	if (piece_ != nullptr) {
 		delete piece_;
+		piece_ = nullptr;
 	}
 }
 

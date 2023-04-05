@@ -4,7 +4,7 @@ class Roi :
     public Piece
 {
 public:
-    Roi(bool estBlanc) : Piece(estBlanc) {};
+    Roi(bool estBlanc);
     void afficher() override;
 };
 

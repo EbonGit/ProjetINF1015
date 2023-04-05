@@ -116,6 +116,7 @@
     <ClCompile Include="bibliotheque_cours\verification_allocation.cpp" />
     <ClCompile Include="Case.cpp" />
     <ClCompile Include="Fou.cpp" />
+    <ClCompile Include="GestionnairePartie.cpp" />
     <ClCompile Include="googletest\src\gtest-all.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piece.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="Affichable.h" />
     <ClInclude Include="Case.h" />
     <ClInclude Include="Fou.h" />
+    <ClInclude Include="GestionnairePartie.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Plateau.h" />
     <ClInclude Include="Roi.h" />

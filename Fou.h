@@ -4,7 +4,7 @@ class Fou :
     public Piece
 {
 public:
-    Fou(bool estBlanc) : Piece(estBlanc) {};
+    Fou(bool estBlanc);
     void afficher() override;
 };
 

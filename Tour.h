@@ -4,7 +4,7 @@ class Tour :
     public Piece
 {
 public:
-    Tour(bool estBlanc) : Piece(estBlanc) {};
+    Tour(bool estBlanc);
     void afficher() override;
 };
 

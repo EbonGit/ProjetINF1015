@@ -19,9 +19,10 @@ public:
 	
 	void setPossedePiece(bool b) { possedePiece_ = b; };
 	bool getPossedePiece() { return possedePiece_; };
+
+	Piece* piece_ = nullptr;
 private:
 	bool estBlanc_;
-	Piece* piece_ = nullptr;
 	bool possedePiece_ = false;
 };
 

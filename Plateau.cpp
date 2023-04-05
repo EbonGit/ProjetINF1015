@@ -30,6 +30,7 @@ void Plateau::afficher() {
 		}
 		std::cout << std::endl;
 	}
+	std::cout << endl;
 }
 
 vector<vector<Case>>& Plateau::get() {

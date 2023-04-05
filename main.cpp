@@ -1,8 +1,7 @@
 ﻿#include <QApplication>
 #include <iostream>
 #include <iomanip>
-#include "Case.h"
-#include "Plateau.h"
+#include "GestionnairePartie.h"
 
 using namespace std;
 
@@ -55,11 +54,15 @@ int main(int argc, char *argv[])
 	plateau[4][6].posseder(fb);
 	plateau[0][2].posseder(fn);
 
-	plateau[7][3].posseder(tb);
-	plateau[1][7].posseder(tn);
+	plateau[4][3].posseder(tb);
+	plateau[2][6].posseder(tn);
 
 	plateau.afficher();
 
+	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
+	gestionnaire.selectionner(&plateau[2][6]);
+	gestionnaire.appliquerStrategie(); //on selectionne la case [1][7] on récupère les cases correspondant au mode de déplacment de la pièce
+	gestionnaire.afficherGrille();
 
 	return 0;
 }
