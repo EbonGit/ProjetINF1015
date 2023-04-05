@@ -60,9 +60,14 @@ int main(int argc, char *argv[])
 	plateau.afficher();
 
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
+	gestionnaire.selectionner(&plateau[0][2]);
+	gestionnaire.appliquerStrategie(); //on selectionne la case [0][2] on récupère les cases correspondant au mode de déplacment de la pièce
+
+	gestionnaire.selectionner(&plateau[5][2]);
+	gestionnaire.appliquerStrategie();
+
 	gestionnaire.selectionner(&plateau[2][6]);
-	gestionnaire.appliquerStrategie(); //on selectionne la case [1][7] on récupère les cases correspondant au mode de déplacment de la pièce
-	gestionnaire.afficherGrille();
+	gestionnaire.appliquerStrategie();
 
 	return 0;
 }

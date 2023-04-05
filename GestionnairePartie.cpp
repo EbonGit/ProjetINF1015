@@ -22,8 +22,10 @@ void GestionnairePartie::appliquerStrategie() {
 		}
 
 		grilleStrategie = temp;
-		
+		afficherGrille();
 	}
+
+
 }
 
 void GestionnairePartie::afficherGrille() {
