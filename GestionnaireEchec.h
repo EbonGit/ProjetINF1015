@@ -8,7 +8,7 @@ public:
     GestionnaireEchec(Gestionnaire* partie, Case* c) : Gestionnaire(partie->getPlateau()) { 
         setTourDeJeu(partie->getTourDeJeu());
         selectionner(c); 
-
+        setParent(partie);
     };
 };
 

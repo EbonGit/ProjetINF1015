@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 	Tour* tb = new Tour(blanc);
 	Tour* tn = new Tour(!blanc);
 
-	plateau[2][3].posseder(rb);
+	plateau[6][6].posseder(rb);
 	plateau[4][2].posseder(rn);
 
 	plateau[4][6].posseder(fb);
@@ -63,29 +63,7 @@ int main(int argc, char *argv[])
 
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
 
-	/*gestionnaire.selectionner(&plateau[4][3]); //on selectionne la case [0][2] on récupère les cases correspondant au mode de déplacment de la pièce
-	gestionnaire.deplacer(&plateau[1][3]);
-
-	gestionnaire.selectionner(&plateau[5][2]);
-	gestionnaire.deplacer(&plateau[4][3]);
-
-	gestionnaire.selectionner(&plateau[4][6]);
-	gestionnaire.deplacer(&plateau[0][2]);
-
-	//cout << plateau[4][3].operator^(plateau[2][3]) << endl;
-	//cout << plateau[2][3].operator()(plateau[4][3], plateau[4][3]);
-	*/
-
-	gestionnaire.selectionner(&plateau[4][3]);
-	gestionnaire.deplacer(&plateau[3][4]);
-
-	gestionnaire.selectionner(&plateau[4][3]);
-	gestionnaire.deplacer(&plateau[1][3]);
-
-	gestionnaire.selectionner(&plateau[4][3]);
-	gestionnaire.deplacer(&plateau[4][2]);
-
-	gestionnaire.ajoutEchec(&plateau[2][6]); //on ajoute un gestionnaire d'echec selectionnant la case x = 6 y = 2
+	gestionnaire.ajoutEchec(&plateau[6][6]); //on ajoute un gestionnaire d'echec selectionnant la case x = 6 y = 2
 
 	return 0;
 }
