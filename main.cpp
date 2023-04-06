@@ -65,11 +65,20 @@ int main(int argc, char *argv[])
 	gestionnaire.selectionner(&plateau[0][2]);
 	gestionnaire.appliquerStrategie(); //on selectionne la case [0][2] on récupère les cases correspondant au mode de déplacment de la pièce
 
+	gestionnaire.deplacer(&plateau[2][4]);
+	plateau.afficher();
+
 	gestionnaire.selectionner(&plateau[5][2]);
 	gestionnaire.appliquerStrategie();
 
+	gestionnaire.deplacer(&plateau[4][3]);
+	plateau.afficher();
+
 	gestionnaire.selectionner(&plateau[2][6]);
 	gestionnaire.appliquerStrategie();
+	
+	gestionnaire.deplacer(&plateau[2][3]);
+	plateau.afficher();
 
 	return 0;
 }

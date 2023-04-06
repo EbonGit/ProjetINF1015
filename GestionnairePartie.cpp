@@ -28,6 +28,7 @@ void GestionnairePartie::appliquerStrategie() {
 
 }
 
+//affichage juste pour la console
 void GestionnairePartie::afficherGrille() {
 	calculDeplacement();
 	calculEnnemi();
@@ -108,4 +109,33 @@ void GestionnairePartie::calculEnnemi() {
 		temp.push_back(ligne);
 	}
 	grilleEnnemi = temp;
+}
+
+void GestionnairePartie::deplacer(Case* autre) {
+	if (caseCourante_ != nullptr) {
+		
+		if (grilleDeplacement[autre->y][autre->x]) {
+			
+			cout << "deplacement possible " << endl;
+			autre->posseder(caseCourante_->piece_);
+			caseCourante_->deposseder();
+			deselectionner();
+		}
+		else if (grilleEnnemi[autre->y][autre->x]) {
+			
+			cout << "piece mange" << endl;
+			delete autre->piece_;
+			autre->deposseder();
+			autre->posseder(caseCourante_->piece_);
+			caseCourante_->deposseder();
+			deselectionner();
+		}
+		else {
+			
+			cout << "deplacement impossible" << endl;
+		}
+	}
+	else {
+		cout << "pas de case dans caseCourante_" << endl;
+	}
 }
