@@ -1,29 +1,15 @@
 #pragma once
-#include "Plateau.h"
-#include "TourDeJeu.h"
-
-using grilleBool = vector<vector<bool>>;
-class GestionnairePartie
+#include "GestionnaireEchec.h"
+class GestionnairePartie : public Gestionnaire//essayer de passer composite avec une classe parent Gestionnaire et possibilité d'avoir des enfants GestionnaireEchec
 {
 public:
 	GestionnairePartie() = default;
-	GestionnairePartie(Plateau* plateau) { plateau_ = plateau; };
-	void appliquerStrategie();
-	void selectionner(Case* c);
-	void deselectionner() { caseCourante_ = nullptr; };
-	void deplacer(Case* autre);
-	bool verifierDeplacement(Case* autre);
-	
-	void calculDeplacement();
-	void calculEnnemi();
-	void afficherGrille(); //fonction temporaire pour aider à visualiser
-private:
-	Plateau* plateau_;
-	TourDeJeu tourDeJeu_;
-	Case* caseCourante_ = nullptr;
+	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) {};
+	void ajoutEchec(Case*);
+	void viderEchec() { echecs_.clear(); };
 
-	grilleBool grilleStrategie;
-	grilleBool grilleDeplacement;
-	grilleBool grilleEnnemi;
+	
+private:
+	vector<Gestionnaire> echecs_;
 };
 
