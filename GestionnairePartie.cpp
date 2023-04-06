@@ -1,6 +1,17 @@
 #include "GestionnairePartie.h"
 #include "Affichable.h"
 
+void GestionnairePartie::selectionner(Case* c) {
+	if (c->getPossedePiece() && (tourDeJeu_.estBlanc() == c->piece_->estBlanc())) {
+		caseCourante_ = c;
+		appliquerStrategie();
+	}
+	else {
+		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
+	}
+
+};
+
 void GestionnairePartie::appliquerStrategie() {
 	if (caseCourante_->getPossedePiece()) {
 		
@@ -113,6 +124,12 @@ void GestionnairePartie::calculEnnemi() {
 
 void GestionnairePartie::deplacer(Case* autre) {
 	if (caseCourante_ != nullptr) {
+
+		if (!verifierDeplacement(autre)) {
+			cout << "pas possible obstruction" << endl;
+			deselectionner();
+			return;
+		}
 		
 		if (grilleDeplacement[autre->y][autre->x]) {
 			
@@ -120,6 +137,7 @@ void GestionnairePartie::deplacer(Case* autre) {
 			autre->posseder(caseCourante_->piece_);
 			caseCourante_->deposseder();
 			deselectionner();
+			++tourDeJeu_;
 		}
 		else if (grilleEnnemi[autre->y][autre->x]) {
 			
@@ -129,6 +147,7 @@ void GestionnairePartie::deplacer(Case* autre) {
 			autre->posseder(caseCourante_->piece_);
 			caseCourante_->deposseder();
 			deselectionner();
+			++tourDeJeu_;
 		}
 		else {
 			
@@ -140,4 +159,21 @@ void GestionnairePartie::deplacer(Case* autre) {
 	}
 
 	plateau_->afficher();
+}
+
+bool GestionnairePartie::verifierDeplacement(Case* autre) {
+	
+	bool pasObstruction = true;
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			if (grilleStrategie[i][j] && !grilleDeplacement[i][j] && (caseCourante_->operator^(plateau_->operator[](i)[j])) != 0) { //si la case est un obstacle et n'est pas la caseCourante
+				if (plateau_->operator[](i)[j].operator()(*autre, *caseCourante_)) {
+					pasObstruction = false;
+				}
+			}
+		}
+	}
+	return pasObstruction;
 }

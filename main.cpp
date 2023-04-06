@@ -62,15 +62,17 @@ int main(int argc, char *argv[])
 
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
 
-	gestionnaire.selectionner(&plateau[0][2]); //on selectionne la case [0][2] on récupère les cases correspondant au mode de déplacment de la pièce
-	gestionnaire.deplacer(&plateau[2][4]);
+	gestionnaire.selectionner(&plateau[4][3]); //on selectionne la case [0][2] on récupère les cases correspondant au mode de déplacment de la pièce
+	gestionnaire.deplacer(&plateau[1][3]);
 
 	gestionnaire.selectionner(&plateau[5][2]);
 	gestionnaire.deplacer(&plateau[4][3]);
 
-	gestionnaire.selectionner(&plateau[2][6]);
-	gestionnaire.deplacer(&plateau[2][3]);
+	gestionnaire.selectionner(&plateau[4][6]);
+	gestionnaire.deplacer(&plateau[0][2]);
 
+	cout << plateau[4][3].operator^(plateau[2][3]) << endl;
+	cout << plateau[2][3].operator()(plateau[4][3], plateau[4][3]);
 
 	return 0;
 }

@@ -20,6 +20,10 @@ public:
 	void setPossedePiece(bool b) { possedePiece_ = b; };
 	bool getPossedePiece() { return possedePiece_; };
 
+	int operator^(const Case&) const; //ici utiliser pour calculer la distance entre 2 points
+
+	bool operator()(const Case& c1, const Case& c2) const;
+
 	Piece* piece_ = nullptr;
 private:
 	bool estBlanc_;

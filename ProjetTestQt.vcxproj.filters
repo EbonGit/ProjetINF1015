@@ -61,6 +61,9 @@
     <ClCompile Include="GestionnairePartie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TourDeJeu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h">
@@ -88,6 +91,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GestionnairePartie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TourDeJeu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
