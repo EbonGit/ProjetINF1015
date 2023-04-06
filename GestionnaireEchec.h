@@ -10,5 +10,6 @@ public:
         selectionner(c); 
         setParent(partie);
     };
+    void selectionner(Case*) override;
 };
 

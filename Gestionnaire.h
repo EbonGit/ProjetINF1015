@@ -6,21 +6,37 @@ using grilleBool = vector<vector<bool>>;
 class Gestionnaire
 {
 public:
+	//constructeur
 	Gestionnaire() = default;
 	Gestionnaire(Plateau * plateau) { plateau_ = plateau; };
+	virtual ~Gestionnaire() {};
+
+	//getter setter
 	Plateau* getPlateau() { return plateau_; };
 	void setTourDeJeu(const TourDeJeu& tdj) { tourDeJeu_ = tdj; };
 	void setParent(Gestionnaire* g) { parent = g; };
+	Gestionnaire* getParent() { return parent; };
 	TourDeJeu& getTourDeJeu() { return tourDeJeu_; };
+	void setCaseCourante(Case* c) { caseCourante_ = c; };
+	Case* getCaseCourante() { return caseCourante_; };
+
+	//strategie
 	void appliquerStrategie();
-	void selectionner(Case * c);
-	void deselectionner() { caseCourante_ = nullptr; };
-	void deplacer(Case * autre);
-	bool verifierDeplacement(Case * autre);
 
-	void setEchec(bool b) { estEchec_ = b; };
-	void setEchecMat(bool b) { estEchecMat_ = b; };
+	//selection
+	virtual void selectionner(Case * c);
+	virtual void deselectionner() { caseCourante_ = nullptr; };
 
+	//ddeplacement
+	virtual void deplacer(Case * autre);
+	virtual bool verifierDeplacement(Case * autre);
+
+	//echec
+	void setEchecB(bool b) { EstEchecB_ = b; };
+	void setEchecN(bool b) { EstEchecN_ = b; };
+	//void setEchecMat(bool b) { estEchecMat_ = b; };
+
+	//calcul grille
 	void calculDeplacement();
 	void calculEnnemi();
 	void afficherGrille(); //fonction temporaire pour aider à visualiser
@@ -31,8 +47,9 @@ private:
 
 	Gestionnaire* parent = nullptr;
 
-	bool estEchec_ = false;
-	bool estEchecMat_ = false;
+	bool EstEchecB_ = false;
+	bool EstEchecN_ = false;
+	//bool estEchecMat_ = false;
 
 	grilleBool grilleStrategie;
 	grilleBool grilleDeplacement;

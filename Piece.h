@@ -12,8 +12,10 @@ public:
     virtual ~Piece() = default;
     Strategie& getStrat() { return strategie_; };
     bool estBlanc() { return estBlanc_; };
+    std::string nom() { return nom_; };
 protected:
     bool estBlanc_;
     Strategie strategie_;
+    std::string nom_ = "";
 };
 
