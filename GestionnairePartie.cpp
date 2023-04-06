@@ -138,4 +138,6 @@ void GestionnairePartie::deplacer(Case* autre) {
 	else {
 		cout << "pas de case dans caseCourante_" << endl;
 	}
+
+	plateau_->afficher();
 }

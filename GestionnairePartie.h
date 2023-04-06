@@ -8,7 +8,11 @@ public:
 	GestionnairePartie() = default;
 	GestionnairePartie(Plateau* plateau) { plateau_ = plateau; };
 	void appliquerStrategie();
-	void selectionner(Case* c) {caseCourante_ = c;};
+	void selectionner(Case* c) {
+		caseCourante_ = c;
+		appliquerStrategie();
+	
+	};
 	void deselectionner() { caseCourante_ = nullptr; };
 	void deplacer(Case* autre);
 	
