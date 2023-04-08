@@ -173,9 +173,12 @@ bool Gestionnaire::verifierDeplacement(Case* autre) {
 		for (int j = 0; j < 8; j++)
 		{
 			if (grilleStrategie[i][j] && !grilleDeplacement[i][j] && (caseCourante_->operator^(plateau_->operator[](i)[j])) != 0) { //si la case est un obstacle et n'est pas la caseCourante
+				
 				if (plateau_->operator[](i)[j].operator()(*autre, *caseCourante_)) {
 					pasObstruction = false;
+					//cout << plateau_->operator[](i)[j].piece_->nom() << endl;
 				}
+				
 			}
 		}
 	}

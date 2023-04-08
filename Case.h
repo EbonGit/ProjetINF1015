@@ -3,6 +3,7 @@
 #include "Roi.h"
 #include "Fou.h"
 #include "Tour.h"
+#include "Reine.h"
 
 class Case : public Affichable
 {
@@ -29,4 +30,5 @@ private:
 	bool estBlanc_;
 	bool possedePiece_ = false;
 };
+
 

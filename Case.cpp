@@ -30,7 +30,7 @@ bool Case::operator()(const Case& p1, const Case& p2) const {
 	if ((*this).operator^(p1) == 0 || (*this).operator^(p2) == 0) {
 		return false;
 	}
-	
+
 	int minX = std::min(p1.x, p2.x);
 	int maxX = std::max(p1.x, p2.x);
 	int minY = std::min(p1.y, p2.y);
