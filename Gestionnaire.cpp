@@ -6,11 +6,11 @@ void Gestionnaire::selectionner(Case* c) {
 	if (c->getPossedePiece() && (tourDeJeu_.estBlanc() == c->piece_->estBlanc())) {
 		caseCourante_ = c;
 		appliquerStrategie();
+		afficherGrille();
 	}
 	else {
 		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
 	}
-
 };
 
 void Gestionnaire::appliquerStrategie() {
@@ -34,16 +34,15 @@ void Gestionnaire::appliquerStrategie() {
 		}
 
 		grilleStrategie = temp;
-		afficherGrille();
 	}
-
+	calculDeplacement();
+	calculEnnemi();
 
 }
 
 //affichage juste pour la console
 void Gestionnaire::afficherGrille() {
-	calculDeplacement();
-	calculEnnemi();
+	
 
 	for (int i = 0; i < 8; i++)
 	{
@@ -177,4 +176,15 @@ bool Gestionnaire::verifierDeplacement(Case* autre) {
 		}
 	}
 	return pasObstruction;
+}
+
+void Gestionnaire::recupererEchecEnfant(bool echecEstBlanc) {
+	if (echecEstBlanc) {
+		setEchecB(true);
+		cout << "echec roi blanc" << endl;
+	}
+	else {
+		setEchecN(true);
+		cout << "echec roi noir" << endl;
+	}
 }

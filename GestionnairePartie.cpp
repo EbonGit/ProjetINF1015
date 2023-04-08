@@ -6,10 +6,19 @@ void GestionnairePartie::ajoutEchec(Case* c) {
 }
 
 GestionnairePartie::~GestionnairePartie() {
+	viderEchec();
+}
+
+void GestionnairePartie::viderEchec() {
 	for (Gestionnaire* g : echecs_) {
 		delete g;
 	}
-	viderEchec();
+	echecs_.clear();
+}
+
+void GestionnairePartie::deplacer(Case* c) {
+	Gestionnaire::deplacer(c);
+	testerEchec();
 }
 
 //appelé avant le changement de couleur
@@ -24,4 +33,11 @@ void GestionnairePartie::testerEchec() {
 			}
 		}
 	}
+
+	for (Gestionnaire* echec : echecs_) {
+		dynamic_cast<GestionnaireEchec*>(echec)->tester();
+	}
+	std::cout << endl;
+	viderEchec();
 }
+

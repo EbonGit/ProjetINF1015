@@ -11,5 +11,7 @@ public:
         setParent(partie);
     };
     void selectionner(Case*) override;
+    void tester();
+    void remonterEchecParent();
 };
 

@@ -63,16 +63,14 @@ int main(int argc, char *argv[])
 
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
 
-	/*gestionnaire.selectionner(&plateau[4][3]);
+	gestionnaire.selectionner(&plateau[4][3]);
 	gestionnaire.deplacer(&plateau[4][2]);
 
 	gestionnaire.selectionner(&plateau[2][6]);
 	gestionnaire.deplacer(&plateau[2][6]);
 
 	gestionnaire.selectionner(&plateau[2][6]);
-	gestionnaire.deplacer(&plateau[4][6]);*/
-
-	gestionnaire.testerEchec(); //on ajoute un gestionnaire d'echec selectionnant les cases possedant une piece
+	gestionnaire.deplacer(&plateau[4][6]);
 
 	return 0;
 }

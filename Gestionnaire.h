@@ -35,11 +35,16 @@ public:
 	void setEchecB(bool b) { EstEchecB_ = b; };
 	void setEchecN(bool b) { EstEchecN_ = b; };
 	//void setEchecMat(bool b) { estEchecMat_ = b; };
+	void recupererEchecEnfant(bool);
 
 	//calcul grille
 	void calculDeplacement();
 	void calculEnnemi();
 	void afficherGrille(); //fonction temporaire pour aider à visualiser
+
+	grilleBool grilleStrategie;
+	grilleBool grilleDeplacement;
+	grilleBool grilleEnnemi;
 private:
 	Plateau* plateau_;
 	TourDeJeu tourDeJeu_;
@@ -50,9 +55,5 @@ private:
 	bool EstEchecB_ = false;
 	bool EstEchecN_ = false;
 	//bool estEchecMat_ = false;
-
-	grilleBool grilleStrategie;
-	grilleBool grilleDeplacement;
-	grilleBool grilleEnnemi;
 };
 

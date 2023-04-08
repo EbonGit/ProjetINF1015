@@ -5,9 +5,12 @@ class GestionnairePartie : public Gestionnaire//essayer de passer composite avec
 public:
 	GestionnairePartie() = default;
 	~GestionnairePartie();
-	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) {};
+	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) { testerEchec(); };
+
+	void deplacer(Case*) override;
+
 	void ajoutEchec(Case*);
-	void viderEchec() { echecs_.clear(); };
+	void viderEchec();
 	void testerEchec();
 private:
 	vector<Gestionnaire*> echecs_;
