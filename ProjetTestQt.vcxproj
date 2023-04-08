@@ -112,9 +112,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Affichable.cpp" />
+    <ClCompile Include="AuditeurVue.cpp" />
     <ClCompile Include="bibliotheque_cours\bibliotheque_cours.cpp" />
     <ClCompile Include="bibliotheque_cours\verification_allocation.cpp" />
     <ClCompile Include="Case.cpp" />
+    <ClCompile Include="CaseGraphique.cpp" />
+    <ClCompile Include="ChessBoard.cpp" />
     <ClCompile Include="Fou.cpp" />
     <ClCompile Include="Gestionnaire.cpp" />
     <ClCompile Include="GestionnaireEchec.cpp" />
@@ -130,7 +133,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Affichable.h" />
+    <ClInclude Include="AuditeurVue.h" />
     <ClInclude Include="Case.h" />
+    <QtMoc Include="CaseGraphique.h" />
+    <QtMoc Include="ChessBoard.h" />
     <ClInclude Include="Fou.h" />
     <ClInclude Include="Gestionnaire.h" />
     <ClInclude Include="GestionnaireEchec.h" />

@@ -1,12 +1,23 @@
 #pragma once
+
 #include "GestionnaireEchec.h"
-class GestionnairePartie : public Gestionnaire//essayer de passer composite avec une classe parent Gestionnaire et possibilité d'avoir des enfants GestionnaireEchec
+#include "AuditeurVue.h"
+
+class GestionnairePartie : 
+	public Gestionnaire,//essayer de passer composite avec une classe parent Gestionnaire et possibilité d'avoir des enfants GestionnaireEchec
+	public AuditeurVue
 {
 public:
 	GestionnairePartie() = default;
 	~GestionnairePartie();
-	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) { testerEchec(); };
+	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) { 
+		testerEchec();
+		plateau->getQt()->setAuditeur(this);
+	};
 
+
+	void cliquer(int, int) override;
+	void cliquer(Case*);
 	void deplacer(Case*) override;
 
 	void ajoutEchec(Case*);
@@ -14,5 +25,6 @@ public:
 	void testerEchec();
 private:
 	vector<Gestionnaire*> echecs_;
+
 };
 

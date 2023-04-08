@@ -70,6 +70,15 @@
     <ClCompile Include="GestionnaireEchec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CaseGraphique.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AuditeurVue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h">
@@ -108,5 +117,16 @@
     <ClInclude Include="GestionnaireEchec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AuditeurVue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="CaseGraphique.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ChessBoard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

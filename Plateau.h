@@ -6,10 +6,10 @@ class Plateau :
     public Affichable
 {
 public:
-    Plateau();
+    Plateau(ChessBoard*);
     void afficher() override;
     vector<vector<Case>>& get();
-    void init();
+    void init(ChessBoard*);
     vector<Case>& operator[](int i) { return cases_[i]; };
     
 private:

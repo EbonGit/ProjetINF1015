@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "ChessBoard.h"
 using namespace std;
 
 const std::string bleu_blanc("\033[0;34;47m");
@@ -17,5 +18,10 @@ public:
 	Affichable() = default;
 	virtual void afficher() = 0;
 	virtual ~Affichable() = default;
+
+	void setQt(ChessBoard* cb) { qtGraphique = cb; };
+	ChessBoard* getQt() { return qtGraphique; };
+protected:
+	ChessBoard* qtGraphique = nullptr;
 };
 

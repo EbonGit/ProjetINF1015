@@ -7,6 +7,7 @@ void Gestionnaire::selectionner(Case* c) {
 		caseCourante_ = c;
 		appliquerStrategie();
 		afficherGrille();
+		c->getQt()->modifierCase((c->y * 8 + c->x), "4E95F2", "12337A");
 	}
 	else {
 		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
@@ -42,7 +43,6 @@ void Gestionnaire::appliquerStrategie() {
 
 //affichage juste pour la console
 void Gestionnaire::afficherGrille() {
-	
 
 	for (int i = 0; i < 8; i++)
 	{
@@ -60,6 +60,7 @@ void Gestionnaire::afficherGrille() {
 		{
 			if (grilleDeplacement[i][j]) {
 				std::cout << bleu_noir;
+				getPlateau()->getQt()->modifierCase((i * 8 + j), "4E95F2", "12337A");
 			}
 			cout << grilleDeplacement[i][j] << reset << " ";
 		}
@@ -70,6 +71,7 @@ void Gestionnaire::afficherGrille() {
 		{
 			if (grilleEnnemi[i][j]) {
 				std::cout << rouge_noir;
+				getPlateau()->getQt()->modifierCase((i * 8 + j), "FF1100", "BF0F02");
 			}
 			cout << grilleEnnemi[i][j] << reset << " ";
 		}
@@ -128,6 +130,7 @@ void Gestionnaire::deplacer(Case* autre) {
 		if (!verifierDeplacement(autre)) {
 			cout << "pas possible obstruction" << endl;
 			deselectionner();
+			plateau_->afficher();
 			return;
 		}
 
@@ -152,6 +155,7 @@ void Gestionnaire::deplacer(Case* autre) {
 		else {
 
 			cout << "deplacement impossible" << endl;
+			deselectionner();
 		}
 	}
 	else {

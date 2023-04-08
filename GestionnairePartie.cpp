@@ -41,3 +41,15 @@ void GestionnairePartie::testerEchec() {
 	viderEchec();
 }
 
+void GestionnairePartie::cliquer(int x, int y) {
+	cliquer(&getPlateau()->operator[](y)[x]);
+}
+
+void GestionnairePartie::cliquer(Case* c) {
+	if (getCaseCourante() == nullptr) {
+		selectionner(c);
+	}
+	else {
+		deplacer(c);
+	}
+}

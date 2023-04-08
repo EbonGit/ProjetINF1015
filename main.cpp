@@ -3,6 +3,11 @@
 #include <iomanip>
 #include "GestionnairePartie.h"
 
+//#include "Calc.hpp"
+//#include "CalcWindow.hpp"
+
+#include <QApplication>
+
 
 using namespace std;
 
@@ -36,10 +41,12 @@ void initialiserBibliothequeCours([[maybe_unused]] int argc, [[maybe_unused]] ch
 int main(int argc, char *argv[])
 {
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
+	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
 
+	ChessBoard board = ChessBoard(); //interface graphique
 
-	Plateau plateau = Plateau();
+	Plateau plateau = Plateau(&board);
 
 	Roi* rb = new Roi(blanc);
 	Roi* rn = new Roi(!blanc);
@@ -63,14 +70,8 @@ int main(int argc, char *argv[])
 
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
 
-	gestionnaire.selectionner(&plateau[4][3]);
-	gestionnaire.deplacer(&plateau[4][2]);
-
-	gestionnaire.selectionner(&plateau[2][6]);
-	gestionnaire.deplacer(&plateau[2][6]);
-
-	gestionnaire.selectionner(&plateau[2][6]);
-	gestionnaire.deplacer(&plateau[4][6]);
-
-	return 0;
+	
+	board.show();
+	return app.exec();
+	//return 0;
 }
