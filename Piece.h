@@ -13,9 +13,11 @@ public:
     Strategie& getStrat() { return strategie_; };
     bool estBlanc() { return estBlanc_; };
     std::string nom() { return nom_; };
+    bool getBesoinLigneDeVue() { return besoinLigneDeVue; };
 protected:
     bool estBlanc_;
     Strategie strategie_;
     std::string nom_ = "";
+    bool besoinLigneDeVue;
 };
 

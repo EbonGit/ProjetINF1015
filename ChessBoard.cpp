@@ -13,9 +13,6 @@ QString generateStyleSheet(std::string bg_color, std::string hover_color) {
 }
 
 void ChessBoard::resetUI() {
-	QString path = "./chess_maestro_bw/";
-	path.append("empty.png");
-	QIcon icon(path);
 	for (int i : range(64)) {
 		if (cases[i]->get_side() == 1) {
 			cases[i]->setStyleSheet(generateStyleSheet("779556", "4e6238"));
@@ -24,7 +21,7 @@ void ChessBoard::resetUI() {
 			cases[i]->setStyleSheet(generateStyleSheet("eeeed2", "bbbba5"));
 		}
 		
-		cases[i]->setIcon(icon);
+		cases[i]->setIcon(QIcon());
 	}
 }
 

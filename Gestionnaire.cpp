@@ -58,7 +58,7 @@ void Gestionnaire::afficherGrille() {
 
 		for (int j = 0; j < 8; j++) //afficher grilleDeplacement
 		{
-			if (grilleDeplacement[i][j]) {
+			if (grilleDeplacement[i][j] && verifierDeplacement(&plateau_->operator[](i)[j])) {
 				std::cout << bleu_noir;
 				getPlateau()->getQt()->modifierCase((i * 8 + j), "4E95F2", "12337A");
 			}
@@ -69,7 +69,7 @@ void Gestionnaire::afficherGrille() {
 
 		for (int j = 0; j < 8; j++) //afficher grilleEnnemi
 		{
-			if (grilleEnnemi[i][j]) {
+			if (grilleEnnemi[i][j] && verifierDeplacement(&plateau_->operator[](i)[j])) {
 				std::cout << rouge_noir;
 				getPlateau()->getQt()->modifierCase((i * 8 + j), "FF1100", "BF0F02");
 			}
@@ -88,7 +88,7 @@ void Gestionnaire::calculDeplacement() {
 		vector<bool> ligne;
 		for (int j = 0; j < 8; j++)
 		{
-			if (grilleStrategie[i][j] && !plateau_->operator[](i)[j].getPossedePiece()) { //si la case ne possède pas de piece
+			if (grilleStrategie[i][j] && !plateau_->operator[](i)[j].getPossedePiece()) { //si la case ne possède pas de piece et n'a pas de de ligne de vue obstrué
 				ligne.push_back(true);
 			}
 			else {
@@ -168,6 +168,17 @@ void Gestionnaire::deplacer(Case* autre) {
 bool Gestionnaire::verifierDeplacement(Case* autre) {
 
 	bool pasObstruction = true;
+	
+	if (caseCourante_->piece_->getBesoinLigneDeVue()) {
+		vector<pair<int, int>> cases = caseCourante_->coordonnees_points_entiers_droite(*autre);
+
+		for (auto c : cases) {
+			if (plateau_->operator[](c.second)[c.first].getPossedePiece()) {
+				pasObstruction = false;
+			}
+		}
+	}
+	/*
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)
@@ -181,7 +192,7 @@ bool Gestionnaire::verifierDeplacement(Case* autre) {
 				
 			}
 		}
-	}
+	}*/
 	return pasObstruction;
 }
 

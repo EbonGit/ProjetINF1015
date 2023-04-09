@@ -9,6 +9,8 @@ const std::string rouge_blanc("\033[0;31;47m");
 const std::string rouge_noir("\033[0;31m");
 const std::string vert_blanc("\033[0;32;47m");
 const std::string vert_noir("\033[0;32m");
+const std::string violet_blanc("\033[0;35;47m");
+const std::string violet_noir("\033[0;35m");
 
 const std::string reset("\033[0m");
 
