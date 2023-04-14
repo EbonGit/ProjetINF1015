@@ -46,39 +46,37 @@ int main(int argc, char *argv[])
 	
 	GestionnaireStatus status;
 	ChessBoard board = ChessBoard(&status); //interface graphique
-
 	Plateau plateau = Plateau(&board);
 
-	Roi* rb = new Roi(blanc);
-	Roi* rn = new Roi(!blanc);
-
-	Fou* fb = new Fou(blanc);
-	Fou* fn = new Fou(!blanc);
-
-	Tour* tb = new Tour(blanc);
-	Tour* tn = new Tour(!blanc);
-
-	Reine* qb = new Reine(blanc);
-	Reine* qn = new Reine(!blanc);
-
-	plateau[6][6].posseder(rb);
-	plateau[4][2].posseder(rn);
-
-	plateau[4][6].posseder(fb);
-	plateau[0][2].posseder(fn);
-
-	plateau[4][3].posseder(tb);
-	plateau[2][6].posseder(tn);
-
-	plateau[0][1].posseder(qb);
-	plateau[7][3].posseder(qn);
-
-	plateau.afficher();
-
+	//Roi* rb = new Roi(blanc);
+	//Roi* rn = new Roi(!blanc);
+	//
+	//Fou* fb = new Fou(blanc);
+	//Fou* fn = new Fou(!blanc);
+	//
+	//Tour* tb = new Tour(blanc);
+	//Tour* tn = new Tour(!blanc);
+	//
+	//Reine* qb = new Reine(blanc);
+	//Reine* qn = new Reine(!blanc);
+	//
+	//plateau[6][6].posseder(rb);
+	//plateau[4][2].posseder(rn);
+	//
+	//plateau[4][6].posseder(fb);
+	//plateau[0][2].posseder(fn);
+	//
+	//plateau[4][3].posseder(tb);
+	//plateau[2][6].posseder(tn);
+	//
+	//plateau[0][1].posseder(qb);
+	//plateau[7][3].posseder(qn);
 	
+	plateau.choisirConfiguration(2);
+
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau, &status);
 
+	plateau.afficher();
 	board.show();
 	return app.exec();
-	//return 0;
 }

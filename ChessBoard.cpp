@@ -43,30 +43,24 @@ CaseGraphique* ChessBoard::nouvelleCase(int side) {
 ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 	QMainWindow(parent)
 {
-
+	status_ = p;
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);
-
-	//QPushButton* btn = new QPushButton("Test");
-	//layoutPrincipal->addWidget(btn);
-	//QObject::connect(btn, &QPushButton::clicked, this, &ChessBoard::popUpWindow);
 	
+	// label status
 	statusLabel = new QLabel(this);
 	statusLabel->setText("Status");
 	statusLabel->setAlignment(Qt::AlignCenter);
 	QFont f("Consolas", 10, QFont::Bold);
 	statusLabel->setFont(f);
 
+	// horizontal spacer
 	QFrame* horizontalFrameLine = new QFrame();
 	horizontalFrameLine->setFrameShape(QFrame::HLine);
 
-	layoutPrincipal->addWidget(statusLabel);
-	layoutPrincipal->addWidget(horizontalFrameLine);
-
+	// cases
 	auto grid_layout = new QGridLayout();
 	grid_layout->setSpacing(0);
-	layoutPrincipal->addLayout(grid_layout);
-
 	groupeBoutons = new QButtonGroup(this);
 
 	for (int i : range(8)) {
@@ -80,15 +74,36 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 		}
 	}
 
+	// Menu
+	auto menu_layout = new QHBoxLayout(widgetPrincipal);
+
+	// Bouton Rejouer
+	QPushButton* menuButton = new QPushButton();
+	menuButton->setText("Rejouer");
+
+	// Combobox for choosing options
+	positionsList = new QComboBox();
+	positionsList->addItem("1");
+	positionsList->addItem("2");
+	positionsList->addItem("3");
+	positionsList->addItem("4");
+	positionsList->addItem("5");
+
+	// adding to the layout
+	menu_layout->addWidget(positionsList);
+	menu_layout->addWidget(menuButton);
+
+	layoutPrincipal->addWidget(statusLabel);
+	layoutPrincipal->addWidget(horizontalFrameLine);
+	layoutPrincipal->addLayout(grid_layout);
+	layoutPrincipal->addLayout(menu_layout);
+
 	QObject::connect(groupeBoutons, &QButtonGroup::idClicked, this, &ChessBoard::selectionnerCase); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
-	
-	setCentralWidget(widgetPrincipal);
-	setWindowTitle("ChessBoard");
-	
-	status_ = p;
 	QObject::connect(status_, &GestionnaireStatus::emitMessage, this, &ChessBoard::showMessage);
 	QObject::connect(status_, &GestionnaireStatus::updateStatus, this, &ChessBoard::setStatusText);
 
+	setCentralWidget(widgetPrincipal);
+	setWindowTitle("ChessBoard");
 }
 
 // Doit appeller la fonction correpondante sur le controlleur
@@ -99,7 +114,6 @@ void ChessBoard::selectionnerCase(int id) {
 	auditeur_->cliquer(x, y);
 }
 
-// Doit mettre à jour le plateau en prenant en paramètre le plateau (vector<vector<Case>>)
 // color = 1 peut bouger, color = 0 ne peut pas, color = 2 peut manger
 void ChessBoard::afficherCasesPostSelection(int x, int y, int color) {
 
@@ -134,10 +148,6 @@ void ChessBoard::dessinerPiece(int id, std::string piece) {
 	path.append(".png");
 	QIcon icon(path);
 	cases[id]->setIcon(icon);
-}
-
-void ChessBoard::requestDeplacement() {
-	//deplacerPieces(2, 3);
 }
 
 void ChessBoard::deplacerPieces(int ancienne, int nouvelle) {

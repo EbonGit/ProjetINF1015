@@ -13,6 +13,7 @@ public:
 	GestionnairePartie(Plateau* plateau, GestionnaireStatus* p) : Gestionnaire(plateau, p) { 
 		testerEchec();
 		plateau->getQt()->setAuditeur(this);
+		plateau_ = plateau;
 	};
 
 
@@ -23,8 +24,10 @@ public:
 	void ajoutEchec(Case*);
 	void viderEchec();
 	void testerEchec();
+
+
 private:
 	vector<Gestionnaire*> echecs_;
-
+	Plateau* plateau_;
 };
 

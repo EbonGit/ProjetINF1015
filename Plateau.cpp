@@ -39,3 +39,38 @@ void Plateau::afficher() {
 vector<vector<Case>>& Plateau::get() {
 	return cases_;
 }
+
+void Plateau::choisirConfiguration(int config) {
+	const bool blanc = true;
+
+	switch (config) {
+	case 0:
+		// Queens only
+		cases_[0][7].posseder(new Reine(blanc));
+		cases_[1][0].posseder(new Reine(!blanc));
+		cases_[4][1].posseder(new Roi(!blanc));
+		cases_[5][4].posseder(new Reine(blanc));
+		cases_[6][5].posseder(new Roi(!blanc));
+		cases_[7][0].posseder(new Reine(blanc));
+		break;
+
+	case 1:
+		// Queen vs two rooks
+		cases_[0][7].posseder(new Roi(!blanc));
+		cases_[0][6].posseder(new Tour(!blanc));
+		cases_[1][6].posseder(new Tour(!blanc));
+		cases_[7][0].posseder(new Reine(blanc));
+		cases_[7][7].posseder(new Roi(blanc));
+		break;
+
+	case 2:
+		// Two rooks vs two minor pieces
+		cases_[1][5].posseder(new Roi(!blanc));
+		cases_[2][6].posseder(new Fou(!blanc));
+		cases_[3][4].posseder(new Fou(!blanc));
+		cases_[6][3].posseder(new Tour(blanc));
+		cases_[7][3].posseder(new Tour(blanc));
+		cases_[7][2].posseder(new Roi(blanc));
+		break;
+	}
+}
