@@ -5,16 +5,17 @@
 class Plateau :
     public Affichable
 {
+
 public:
     Plateau(ChessBoard*);
     void afficher() override;
     vector<vector<Case>>& get();
     void init(ChessBoard*);
     vector<Case>& operator[](int i) { return cases_[i]; };
-
-    void choisirConfiguration(int);
+    void chargerConfiguration(int);
 
 private:
     vector<vector<Case>> cases_;
+
 };
 

@@ -118,6 +118,7 @@
     <ClCompile Include="Case.cpp" />
     <ClCompile Include="CaseGraphique.cpp" />
     <ClCompile Include="ChessBoard.cpp" />
+    <ClCompile Include="ControleurPlateau.cpp" />
     <ClCompile Include="Fou.cpp" />
     <ClCompile Include="Gestionnaire.cpp" />
     <ClCompile Include="GestionnaireEchec.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Case.h" />
     <QtMoc Include="CaseGraphique.h" />
     <QtMoc Include="ChessBoard.h" />
+    <QtMoc Include="ControleurPlateau.h" />
     <ClInclude Include="Fou.h" />
     <ClInclude Include="Gestionnaire.h" />
     <ClInclude Include="GestionnaireEchec.h" />

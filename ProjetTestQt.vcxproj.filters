@@ -85,15 +85,12 @@
     <ClCompile Include="GestionnaireStatus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ControleurPlateau.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Affichable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Plateau.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Piece.h">
@@ -129,6 +126,12 @@
     <ClInclude Include="Gestionnaire.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Plateau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Affichable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CaseGraphique.h">
@@ -138,6 +141,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="GestionnaireStatus.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ControleurPlateau.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -40,7 +40,7 @@ vector<vector<Case>>& Plateau::get() {
 	return cases_;
 }
 
-void Plateau::choisirConfiguration(int config) {
+void Plateau::chargerConfiguration(int config) {
 	const bool blanc = true;
 
 	switch (config) {

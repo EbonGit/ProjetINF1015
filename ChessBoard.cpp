@@ -75,7 +75,7 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 	}
 
 	// Menu
-	auto menu_layout = new QHBoxLayout(widgetPrincipal);
+	auto menu_layout = new QHBoxLayout();
 
 	// Bouton Rejouer
 	QPushButton* menuButton = new QPushButton();
@@ -83,11 +83,10 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 
 	// Combobox for choosing options
 	positionsList = new QComboBox();
-	positionsList->addItem("1");
-	positionsList->addItem("2");
-	positionsList->addItem("3");
-	positionsList->addItem("4");
-	positionsList->addItem("5");
+	positionsList->addItem("Queens Only");
+	positionsList->addItem("Queens vs two rooks");
+	positionsList->addItem("Two rooks vs two minor pieces");
+	
 
 	// adding to the layout
 	menu_layout->addWidget(positionsList);
@@ -101,6 +100,7 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 	QObject::connect(groupeBoutons, &QButtonGroup::idClicked, this, &ChessBoard::selectionnerCase); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
 	QObject::connect(status_, &GestionnaireStatus::emitMessage, this, &ChessBoard::showMessage);
 	QObject::connect(status_, &GestionnaireStatus::updateStatus, this, &ChessBoard::setStatusText);
+	QObject::connect(menuButton, &QPushButton::clicked, this, &ChessBoard::selectConfig);
 
 	setCentralWidget(widgetPrincipal);
 	setWindowTitle("ChessBoard");
@@ -176,4 +176,9 @@ void ChessBoard::showMessage(std::string title, std::string message, int level) 
 void ChessBoard::setStatusText(std::string status) {
 	const QString text = status.c_str();
 	statusLabel->setText(text);
+}
+
+void ChessBoard::selectConfig() {
+	//std::cout << "we selected : " << positionsList->currentIndex() << std::endl;
+	emit OnConfigSelected(positionsList->currentIndex());
 }

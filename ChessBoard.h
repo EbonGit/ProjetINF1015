@@ -29,7 +29,7 @@ public:
 	void resetUI();
 	void deplacerPieces(int, int);
 	void setAuditeur(AuditeurVue* av) { auditeur_ = av; };
-
+	void selectConfig();
 
 private:
 	std::vector<CaseGraphique*> cases;
@@ -46,4 +46,7 @@ public slots:
 	void modifierCase(int, std::string, std::string);
 	void showMessage(std::string, std::string, int);
 	void setStatusText(std::string);
+
+signals:
+	void OnConfigSelected(int);
 };

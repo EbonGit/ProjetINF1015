@@ -14,7 +14,7 @@ const std::string violet_noir("\033[0;35m");
 
 const std::string reset("\033[0m");
 
-class Affichable
+class Affichable 
 {
 public:
 	Affichable() = default;
