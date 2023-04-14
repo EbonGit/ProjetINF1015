@@ -40,12 +40,28 @@ CaseGraphique* ChessBoard::nouvelleCase(int side) {
 	return case_graphique;
 }
 
-ChessBoard::ChessBoard(QWidget* parent) :
+ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 	QMainWindow(parent)
 {
 
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);
+
+	//QPushButton* btn = new QPushButton("Test");
+	//layoutPrincipal->addWidget(btn);
+	//QObject::connect(btn, &QPushButton::clicked, this, &ChessBoard::popUpWindow);
+	
+	statusLabel = new QLabel(this);
+	statusLabel->setText("Status");
+	statusLabel->setAlignment(Qt::AlignCenter);
+	QFont f("Consolas", 10, QFont::Bold);
+	statusLabel->setFont(f);
+
+	QFrame* horizontalFrameLine = new QFrame();
+	horizontalFrameLine->setFrameShape(QFrame::HLine);
+
+	layoutPrincipal->addWidget(statusLabel);
+	layoutPrincipal->addWidget(horizontalFrameLine);
 
 	auto grid_layout = new QGridLayout();
 	grid_layout->setSpacing(0);
@@ -65,14 +81,13 @@ ChessBoard::ChessBoard(QWidget* parent) :
 	}
 
 	QObject::connect(groupeBoutons, &QButtonGroup::idClicked, this, &ChessBoard::selectionnerCase); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
-
-	//QPushButton* btn = new QPushButton("Deplacer");
-	//layoutPrincipal->addWidget(btn);
-	//QObject::connect(btn, &QPushButton::clicked, this, &ChessBoard::requestDeplacement);
-
-
+	
 	setCentralWidget(widgetPrincipal);
 	setWindowTitle("ChessBoard");
+	
+	status_ = p;
+	QObject::connect(status_, &GestionnaireStatus::emitMessage, this, &ChessBoard::showMessage);
+	QObject::connect(status_, &GestionnaireStatus::updateStatus, this, &ChessBoard::setStatusText);
 
 }
 
@@ -128,4 +143,27 @@ void ChessBoard::requestDeplacement() {
 void ChessBoard::deplacerPieces(int ancienne, int nouvelle) {
 	cases[nouvelle]->setIcon(cases[ancienne]->icon());
 	cases[ancienne]->setIcon(QIcon());
+}
+
+void ChessBoard::showMessage(std::string title, std::string message, int level) {
+	const QString msg = message.c_str();
+	const QString t = title.c_str();
+	switch(level){
+	case 0:
+		QMessageBox::information(nullptr, t, msg);
+		break;
+	case 1:
+		QMessageBox::warning(nullptr, t, msg);
+		break;
+	case 2:
+		QMessageBox::critical(nullptr, t, msg);
+		break;
+	}
+	
+
+}
+
+void ChessBoard::setStatusText(std::string status) {
+	const QString text = status.c_str();
+	statusLabel->setText(text);
 }

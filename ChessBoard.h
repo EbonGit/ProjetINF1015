@@ -4,9 +4,11 @@
 #include <QLabel>
 #include <QLayout>
 #include <QButtonGroup>
+#include <QMessageBox>
 
 #include "CaseGraphique.h"
 #include "AuditeurVue.h"
+#include "GestionnaireStatus.h"
 
 #include <iostream>
 #include <cppitertools/range.hpp>
@@ -17,7 +19,7 @@ class ChessBoard : public QMainWindow
 	Q_OBJECT;
 
 public:
-	ChessBoard(QWidget* parent = nullptr);
+	ChessBoard(GestionnaireStatus* p, QWidget* parent = nullptr);
 	~ChessBoard() override = default;
 
 	CaseGraphique* nouvelleCase(int);
@@ -29,9 +31,12 @@ public:
 
 	void setAuditeur(AuditeurVue* av) { auditeur_ = av; };
 
+
 private:
 	std::vector<CaseGraphique*> cases;
 	AuditeurVue* auditeur_ = nullptr;
+	GestionnaireStatus* status_ = nullptr;
+	QLabel* statusLabel = nullptr;
 
 public slots:
 	void selectionnerCase(int);
@@ -40,5 +45,6 @@ public slots:
 	void dessinerPiece(int, std::string);
 	void modifierCase(int, std::string, std::string);
 	void requestDeplacement();
-
+	void showMessage(std::string, std::string, int);
+	void setStatusText(std::string);
 };

@@ -1,7 +1,7 @@
 #pragma once
-class AuditeurVue
+class AuditeurVue 
 {
 public:
-	virtual void cliquer(int, int) {};
+	virtual void cliquer(int, int) {}
 };
 

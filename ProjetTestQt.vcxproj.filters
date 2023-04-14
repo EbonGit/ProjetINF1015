@@ -82,6 +82,9 @@
     <ClCompile Include="Reine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GestionnaireStatus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Case.h">
@@ -114,16 +117,16 @@
     <ClInclude Include="TourDeJeu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gestionnaire.h">
+    <ClInclude Include="GestionnaireEchec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GestionnaireEchec.h">
+    <ClInclude Include="Reine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AuditeurVue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Reine.h">
+    <ClInclude Include="Gestionnaire.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ChessBoard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="GestionnaireStatus.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

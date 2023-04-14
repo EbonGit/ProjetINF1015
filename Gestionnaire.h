@@ -1,14 +1,18 @@
 #pragma once
 #include "Plateau.h"
 #include "TourDeJeu.h"
+#include "GestionnaireStatus.h"
 
 using grilleBool = vector<vector<bool>>;
-class Gestionnaire
+class Gestionnaire 
 {
 public:
 	//constructeur
 	Gestionnaire() = default;
-	Gestionnaire(Plateau * plateau) { plateau_ = plateau; };
+	Gestionnaire(Plateau * plateau, GestionnaireStatus* p) {
+		plateau_ = plateau; 
+		status_ = p;
+	};
 	virtual ~Gestionnaire() {};
 
 	//getter setter
@@ -19,6 +23,7 @@ public:
 	TourDeJeu& getTourDeJeu() { return tourDeJeu_; };
 	void setCaseCourante(Case* c) { caseCourante_ = c; };
 	Case* getCaseCourante() { return caseCourante_; };
+	GestionnaireStatus* getPopUp() { return status_; };
 
 	//strategie
 	void appliquerStrategie();
@@ -49,11 +54,13 @@ private:
 	Plateau* plateau_;
 	TourDeJeu tourDeJeu_;
 	Case* caseCourante_ = nullptr;
+	GestionnaireStatus* status_ = nullptr;
 
 	Gestionnaire* parent = nullptr;
 
 	bool EstEchecB_ = false;
 	bool EstEchecN_ = false;
 	//bool estEchecMat_ = false;
+
 };
 

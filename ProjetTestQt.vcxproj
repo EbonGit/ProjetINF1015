@@ -122,6 +122,7 @@
     <ClCompile Include="Gestionnaire.cpp" />
     <ClCompile Include="GestionnaireEchec.cpp" />
     <ClCompile Include="GestionnairePartie.cpp" />
+    <ClCompile Include="GestionnaireStatus.cpp" />
     <ClCompile Include="googletest\src\gtest-all.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piece.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Gestionnaire.h" />
     <ClInclude Include="GestionnaireEchec.h" />
     <ClInclude Include="GestionnairePartie.h" />
+    <QtMoc Include="GestionnaireStatus.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="Plateau.h" />
     <ClInclude Include="Reine.h" />

@@ -10,7 +10,7 @@ class GestionnairePartie :
 public:
 	GestionnairePartie() = default;
 	~GestionnairePartie();
-	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) { 
+	GestionnairePartie(Plateau* plateau, GestionnaireStatus* p) : Gestionnaire(plateau, p) { 
 		testerEchec();
 		plateau->getQt()->setAuditeur(this);
 	};

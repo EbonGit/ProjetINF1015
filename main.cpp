@@ -43,8 +43,9 @@ int main(int argc, char *argv[])
 	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
 	QApplication app(argc, argv);
 	initialiserBibliothequeCours(argc, argv);
-
-	ChessBoard board = ChessBoard(); //interface graphique
+	
+	GestionnaireStatus status;
+	ChessBoard board = ChessBoard(&status); //interface graphique
 
 	Plateau plateau = Plateau(&board);
 
@@ -74,7 +75,8 @@ int main(int argc, char *argv[])
 
 	plateau.afficher();
 
-	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
+	
+	GestionnairePartie gestionnaire = GestionnairePartie(&plateau, &status);
 
 	board.show();
 	return app.exec();

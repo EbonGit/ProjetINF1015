@@ -11,6 +11,7 @@ void Gestionnaire::selectionner(Case* c) {
 	}
 	else {
 		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
+		status_->sendMessage("Attention", "impossible de selectionner case vide || pas le tour de cette couleur");
 	}
 };
 
@@ -200,6 +201,7 @@ void Gestionnaire::recupererEchecEnfant(bool echecEstBlanc) {
 	if (echecEstBlanc) {
 		setEchecB(true);
 		cout << "echec roi blanc" << endl;
+		
 	}
 	else {
 		setEchecN(true);
