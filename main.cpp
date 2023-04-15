@@ -48,7 +48,10 @@ int main(int argc, char *argv[])
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau, &status);
 	ControleurPlateau controllerPlateau(&plateau, &gestionnaire);
 
+	// move to a load default function ?
 	plateau.chargerConfiguration(0);
+	gestionnaire.getGestionnaireStatus()->setStatus("Tour blanc");
+
 	plateau.afficher();
 	board.show();
 	return app.exec();

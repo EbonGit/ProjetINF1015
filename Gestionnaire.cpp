@@ -140,8 +140,8 @@ void Gestionnaire::deplacer(Case* autre) {
 			cout << "deplacement possible " << endl;
 			autre->posseder(caseCourante_->piece_);
 			caseCourante_->deposseder();
-			deselectionner();
 			++tourDeJeu_;
+			deselectionner();
 		}
 		else if (grilleEnnemi[autre->y][autre->x]) {
 
@@ -150,8 +150,8 @@ void Gestionnaire::deplacer(Case* autre) {
 			autre->deposseder();
 			autre->posseder(caseCourante_->piece_);
 			caseCourante_->deposseder();
-			deselectionner();
 			++tourDeJeu_;
+			deselectionner();
 		}
 		else {
 
@@ -200,11 +200,13 @@ bool Gestionnaire::verifierDeplacement(Case* autre) {
 void Gestionnaire::recupererEchecEnfant(bool echecEstBlanc) {
 	if (echecEstBlanc) {
 		setEchecB(true);
+		status_->setStatus(status_->getCurrentStatus() + ", echec roi blanc");
 		cout << "echec roi blanc" << endl;
 		
 	}
 	else {
 		setEchecN(true);
+		status_->setStatus(status_->getCurrentStatus() + ", echec roi noir");
 		cout << "echec roi noir" << endl;
 	}
 }

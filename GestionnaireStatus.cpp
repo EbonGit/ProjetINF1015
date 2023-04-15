@@ -5,5 +5,6 @@ void GestionnaireStatus::sendMessage(std::string title, std::string msg, int lev
 }
 
 void GestionnaireStatus::setStatus(std::string status) {
+	statusMessage_ = status;
 	emit updateStatus(status);
 }

@@ -30,7 +30,11 @@ public:
 
 	//selection
 	virtual void selectionner(Case * c);
-	virtual void deselectionner() { caseCourante_ = nullptr; };
+	virtual void deselectionner() {
+		caseCourante_ = nullptr; 
+		string tour = tourDeJeu_.estBlanc() ? "Tour blanc" : "Tour noir";
+		status_->setStatus(tour);
+	};
 
 	//ddeplacement
 	virtual void deplacer(Case * autre);
