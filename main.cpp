@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
 	GestionnaireStatus status;
 	ChessBoard board = ChessBoard(&status); //interface graphique
 	Plateau plateau = Plateau(&board);
-	ControleurPlateau controllerPlateau(&plateau);
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau, &status);
+	ControleurPlateau controllerPlateau(&plateau, &gestionnaire);
 
 	plateau.chargerConfiguration(0);
 	plateau.afficher();

@@ -17,6 +17,5 @@ public:
 
 private:
     vector<vector<Case>> cases_;
-    //vector<Piece*> pieces_;
 };
 
