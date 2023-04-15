@@ -23,7 +23,7 @@ public:
 	TourDeJeu& getTourDeJeu() { return tourDeJeu_; };
 	void setCaseCourante(Case* c) { caseCourante_ = c; };
 	Case* getCaseCourante() { return caseCourante_; };
-	GestionnaireStatus* getPopUp() { return status_; };
+	GestionnaireStatus* getGestionnaireStatus() { return status_; };
 
 	//strategie
 	void appliquerStrategie();

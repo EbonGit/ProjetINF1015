@@ -5,7 +5,7 @@ class GestionnaireEchec :
 {
 public:
     GestionnaireEchec() = default;
-    GestionnaireEchec(Gestionnaire* partie, Case* c) : Gestionnaire(partie->getPlateau(), partie->getPopUp()) { 
+    GestionnaireEchec(Gestionnaire* partie, Case* c) : Gestionnaire(partie->getPlateau(), partie->getGestionnaireStatus()) { 
         setTourDeJeu(partie->getTourDeJeu());
         selectionner(c); 
         setParent(partie);

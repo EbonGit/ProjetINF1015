@@ -50,7 +50,7 @@ void Plateau::chargerConfiguration(int config) {
 		cases_[1][0].posseder(new Reine(!blanc));
 		cases_[4][1].posseder(new Roi(!blanc));
 		cases_[5][4].posseder(new Reine(blanc));
-		cases_[6][5].posseder(new Roi(!blanc));
+		cases_[6][5].posseder(new Roi(blanc));
 		cases_[7][0].posseder(new Reine(blanc));
 		break;
 
@@ -72,5 +72,16 @@ void Plateau::chargerConfiguration(int config) {
 		cases_[7][3].posseder(new Tour(blanc));
 		cases_[7][2].posseder(new Roi(blanc));
 		break;
+	}
+}
+
+void Plateau::viderPlateau() {
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			if(cases_[i][j].getPossedePiece() == true)
+				cases_[i][j].reset();
+		}
 	}
 }

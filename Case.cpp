@@ -105,6 +105,13 @@ void Case::deposseder() {
 	possedePiece_ = false;
 }
 
+void Case::reset() {
+	piece_->setQt(nullptr);
+	delete piece_;
+	piece_ = nullptr;
+	possedePiece_ = false;
+}
+
 void Case::afficher() {
 	if (possedePiece_) {
 		piece_->afficher(); //afficher la pièce

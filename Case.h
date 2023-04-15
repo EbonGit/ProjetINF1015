@@ -19,6 +19,7 @@ public:
 
 	void posseder(Piece* ptr);
 	void deposseder();
+	void reset();
 	
 	void setPossedePiece(bool b) { possedePiece_ = b; };
 	bool getPossedePiece() { return possedePiece_; };
