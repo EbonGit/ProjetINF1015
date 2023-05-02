@@ -4,7 +4,7 @@
 #include "AuditeurVue.h"
 
 class GestionnairePartie : 
-	public Gestionnaire,//essayer de passer composite avec une classe parent Gestionnaire et possibilité d'avoir des enfants GestionnaireEchec
+	public Gestionnaire,
 	public AuditeurVue
 {
 public:
@@ -16,6 +16,7 @@ public:
 		plateau_ = plateau;
 	};
 
+	Plateau* plateau() { return plateau_; };
 
 	void cliquer(int, int) override;
 	void cliquer(Case*);

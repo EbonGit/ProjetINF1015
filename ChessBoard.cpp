@@ -49,7 +49,7 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 	
 	// label status
 	statusLabel = new QLabel(this);
-	statusLabel->setText("Status");
+	statusLabel->setText("Tour blanc");
 	statusLabel->setAlignment(Qt::AlignCenter);
 	QFont f("Consolas", 10, QFont::Bold);
 	statusLabel->setFont(f);

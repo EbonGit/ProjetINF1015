@@ -64,7 +64,6 @@ private:
 
 	bool EstEchecB_ = false;
 	bool EstEchecN_ = false;
-	//bool estEchecMat_ = false;
 
 };
 

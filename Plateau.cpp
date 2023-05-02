@@ -3,6 +3,7 @@
 Plateau::Plateau(ChessBoard* cb) {
 	init(cb);
 	setQt(cb);
+	chargerConfiguration(0);
 }
 
 void Plateau::init(ChessBoard* cb) {
