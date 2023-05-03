@@ -30,6 +30,7 @@ public:
 	void show();
 
 	void resetUI();
+	void resetStatus();
 	void deplacerPieces(int, int);
 	void selectConfig();
 

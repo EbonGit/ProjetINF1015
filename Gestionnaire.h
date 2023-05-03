@@ -1,7 +1,7 @@
 #pragma once
 #include "Plateau.h"
 #include "TourDeJeu.h"
-#include "GestionnaireStatus.h"
+
 
 using grilleBool = vector<vector<bool>>;
 class Gestionnaire 
@@ -9,7 +9,7 @@ class Gestionnaire
 public:
 	//constructeur
 	Gestionnaire() = default;
-	Gestionnaire(Plateau* plateau, GestionnaireStatus* p);
+	Gestionnaire(Plateau* plateau);
 	virtual ~Gestionnaire() {};
 
 	//getter setter
@@ -20,7 +20,6 @@ public:
 	TourDeJeu& getTourDeJeu() { return tourDeJeu_; };
 	void setCaseCourante(Case* c) { caseCourante_ = c; };
 	Case* getCaseCourante() { return caseCourante_; };
-	GestionnaireStatus* getGestionnaireStatus() { return status_; };
 
 	//strategie
 	void appliquerStrategie();
@@ -30,7 +29,6 @@ public:
 	virtual void deselectionner() {
 		caseCourante_ = nullptr;
 		string tour = tourDeJeu_.estBlanc() ? "Tour blanc" : "Tour noir";
-		status_->setStatus(tour);
 	};
 
 	//deplacement
@@ -40,6 +38,8 @@ public:
 	//echec
 	void setEchecB(bool b) { EstEchecB_ = b; };
 	void setEchecN(bool b) { EstEchecN_ = b; };
+	bool getEchecB() { return EstEchecB_; };
+	bool getEchecN() { return EstEchecN_; };
 	//void setEchecMat(bool b) { estEchecMat_ = b; };
 	void recupererEchecEnfant(bool);
 
@@ -55,7 +55,6 @@ private:
 	Plateau* plateau_;
 	TourDeJeu tourDeJeu_;
 	Case* caseCourante_ = nullptr;
-	GestionnaireStatus* status_ = nullptr;
 
 	Gestionnaire* parent = nullptr;
 

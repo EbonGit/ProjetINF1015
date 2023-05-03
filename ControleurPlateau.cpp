@@ -7,5 +7,4 @@ void ControleurPlateau::OnConfigReceived(int config) {
 
 	TourDeJeu tdj;
 	gestionnaire_->setTourDeJeu(tdj);
-	gestionnaire_->getGestionnaireStatus()->setStatus("Tour blanc");
 }

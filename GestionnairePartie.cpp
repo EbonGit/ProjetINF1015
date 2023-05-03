@@ -24,6 +24,9 @@ void GestionnairePartie::deplacer(Case* c) {
 //appelé avant le changement de couleur
 void GestionnairePartie::testerEchec() {
 	//pour chaque case possedant une piece enemmi: creer un gestionnaireEchec qui setEchec à son *parent si une des pieces peut manger le roi de la couleur du tour
+	setEchecB(false);
+	setEchecN(false);
+	
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)

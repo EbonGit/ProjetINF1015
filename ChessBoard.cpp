@@ -49,6 +49,25 @@ void ChessBoard::resetUI() {
 			cases[i]->setIcon(QIcon());
 		}
 	}
+
+	resetStatus();
+}
+
+void ChessBoard::resetStatus() {
+	if (gestionnairePartie_->getTourDeJeu().estBlanc()) {
+		status_->setStatus("Tour blanc");
+	}
+	else {
+		status_->setStatus("Tour noir");
+	}
+
+	if (gestionnairePartie_->getEchecB()) {
+		status_->setStatus(status_->getCurrentStatus() + ", echec roi blanc");
+	}
+
+	if (gestionnairePartie_->getEchecN()) {
+		status_->setStatus(status_->getCurrentStatus() + ", echec roi noir");
+	}
 }
 
 CaseGraphique* ChessBoard::nouvelleCase(int side) {

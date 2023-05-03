@@ -9,7 +9,7 @@ class GestionnairePartie :
 public:
 	GestionnairePartie() = default;
 	~GestionnairePartie();
-	GestionnairePartie(Plateau* plateau, GestionnaireStatus* p) : Gestionnaire(plateau, p) { 
+	GestionnairePartie(Plateau* plateau) : Gestionnaire(plateau) { 
 		testerEchec();
 		plateau_ = plateau;
 	};

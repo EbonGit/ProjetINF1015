@@ -1,9 +1,8 @@
 #include "Gestionnaire.h"
 #include "Affichable.h"
 
-Gestionnaire::Gestionnaire(Plateau* plateau, GestionnaireStatus* p) {
+Gestionnaire::Gestionnaire(Plateau* plateau) {
 	plateau_ = plateau;
-	status_ = p;
 
 	grilleBool temp;
 	for (int i = 0; i < 8; i++)
@@ -45,9 +44,9 @@ void Gestionnaire::selectionner(Case* c) {
 	}
 	else {
 		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
-		status_->sendMessage("Attention", "impossible de selectionner case vide || pas le tour de cette couleur");
+		//status_->sendMessage("Attention", "impossible de selectionner case vide || pas le tour de cette couleur");
 	}
-
+	
 	
 };
 
@@ -234,13 +233,11 @@ bool Gestionnaire::verifierDeplacement(Case* autre) {
 void Gestionnaire::recupererEchecEnfant(bool echecEstBlanc) {
 	if (echecEstBlanc) {
 		setEchecB(true);
-		status_->setStatus(status_->getCurrentStatus() + ", echec roi blanc");
 		cout << "echec roi blanc" << endl;
 		
 	}
 	else {
 		setEchecN(true);
-		status_->setStatus(status_->getCurrentStatus() + ", echec roi noir");
 		cout << "echec roi noir" << endl;
 	}
 }
