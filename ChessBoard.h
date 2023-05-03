@@ -15,6 +15,15 @@
 
 #include "Gestionnaire.h"
 
+const std::string couleurCaseVertClair = "779556";
+const std::string couleurCaseVertFonce = "4e6238";
+const std::string couleurCaseBeigeClair = "eeeed2";
+const std::string couleurCaseBeigeFonce = "bbbba5";
+const std::string couleurCaseBleuClair = "388FFF";
+const std::string couleurCaseBleuFonce = "2661AD";
+const std::string couleurCaseRougeClair = "FA2E2E";
+const std::string couleurCaseRougeFonce = "C42525";
+
 
 class ChessBoard : public QMainWindow
 {
@@ -44,11 +53,9 @@ private:
 
 public slots:
 	void selectionnerCase(int);
-	void afficherCasesPostSelection(int, int, int);
 	void dessinerPiece(int, int, std::string);
 	void dessinerPiece(int, std::string);
 	void modifierCase(int, std::string, std::string);
-	void showMessage(std::string, std::string, int);
 	void setStatusText(std::string);
 
 signals:

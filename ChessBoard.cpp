@@ -24,20 +24,20 @@ std::string bool_en_string(bool b)
 void ChessBoard::resetUI() {
 	for (int i : range(64)) {
 		if (cases[i]->get_side() == 1) {
-			cases[i]->setStyleSheet(generateStyleSheet("779556", "4e6238"));
+			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseVertClair, couleurCaseVertFonce));
 		}
 		else {
-			cases[i]->setStyleSheet(generateStyleSheet("eeeed2", "bbbba5"));
+			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseBeigeClair, couleurCaseBeigeFonce));
 		}
 		int x = i % 8;
 		int y = i / 8;
 
 		if (gestionnairePartie_->grilleDeplacement[y][x] && gestionnairePartie_->verifierDeplacement(&(*plateau_)[y][x])) {
-			cases[i]->setStyleSheet(generateStyleSheet("388FFF", "2661AD"));
+			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseBleuClair, couleurCaseBleuFonce));
 		}
 
 		if (gestionnairePartie_->grilleEnnemi[y][x] && gestionnairePartie_->verifierDeplacement(&(*plateau_)[y][x])) {
-			cases[i]->setStyleSheet(generateStyleSheet("FA2E2E", "C42525"));
+			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseRougeClair, couleurCaseRougeFonce));
 		}
 		
 		if ((*plateau_)[y][x].getPossedePiece()) {
@@ -76,11 +76,11 @@ CaseGraphique* ChessBoard::nouvelleCase(int side) {
 	case_graphique->setIconSize(QSize(60, 60));
 
 	if (side == 1) {
-		case_graphique->setStyleSheet(generateStyleSheet("779556", "4e6238"));
+		case_graphique->setStyleSheet(generateStyleSheet(couleurCaseVertClair, couleurCaseVertFonce));
 	}
 	else
 	{
-		case_graphique->setStyleSheet(generateStyleSheet("eeeed2", "bbbba5"));
+		case_graphique->setStyleSheet(generateStyleSheet(couleurCaseBeigeClair, couleurCaseBeigeFonce));
 	}
 	return case_graphique;
 }
@@ -145,7 +145,6 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, Gestionnaire* g, QWidget* parent) 
 	layoutPrincipal->addLayout(menu_layout);
 
 	QObject::connect(groupeBoutons, &QButtonGroup::idClicked, this, &ChessBoard::selectionnerCase); // ajouterChiffre prend un int, donc le ID du bouton est bon directement.
-	QObject::connect(status_, &GestionnaireStatus::emitMessage, this, &ChessBoard::showMessage);
 	QObject::connect(status_, &GestionnaireStatus::updateStatus, this, &ChessBoard::setStatusText);
 	QObject::connect(menuButton, &QPushButton::clicked, this, &ChessBoard::selectConfig);
 
@@ -164,20 +163,6 @@ void ChessBoard::selectionnerCase(int id) {
 	resetUI();
 }
 
-// color = 1 peut bouger, color = 0 ne peut pas, color = 2 peut manger
-void ChessBoard::afficherCasesPostSelection(int x, int y, int color) {
-
-	int id = y * 8 + x;
-	if (color == 0) {
-		modifierCase(id, "999999", "242633");
-	}
-	else if (color == 1) {
-		modifierCase(id, "4E95F2", "12337A");
-	}
-	else {
-		modifierCase(id, "F44949", "750000");
-	}
-}
 
 void ChessBoard::modifierCase(int id, std::string color1, std::string color2) {
 	cases[id]->setStyleSheet(generateStyleSheet(color1, color2));
@@ -203,24 +188,6 @@ void ChessBoard::dessinerPiece(int id, std::string piece) {
 void ChessBoard::deplacerPieces(int ancienne, int nouvelle) {
 	cases[nouvelle]->setIcon(cases[ancienne]->icon());
 	cases[ancienne]->setIcon(QIcon());
-}
-
-void ChessBoard::showMessage(std::string title, std::string message, int level) {
-	const QString msg = message.c_str();
-	const QString t = title.c_str();
-	switch(level){
-	case 0:
-		QMessageBox::information(nullptr, t, msg);
-		break;
-	case 1:
-		QMessageBox::warning(nullptr, t, msg);
-		break;
-	case 2:
-		QMessageBox::critical(nullptr, t, msg);
-		break;
-	}
-	
-
 }
 
 void ChessBoard::setStatusText(std::string status) {

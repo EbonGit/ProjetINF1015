@@ -161,6 +161,7 @@ void Gestionnaire::deplacer(Case* autre) {
 	if (caseCourante_ != nullptr) {
 
 		if (sacrifice_) {
+
 			cout << "pas possible sacrifice du roi" << endl;
 			deselectionner();
 			plateau_->afficher();

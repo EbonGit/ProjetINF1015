@@ -8,7 +8,6 @@ class GestionnaireStatus : public QObject
 
 public:
 	GestionnaireStatus() = default;
-	void sendMessage(std::string, std::string, int level=0);
 	void setStatus(std::string);
 	std::string getCurrentStatus() { return statusMessage_; };
 
