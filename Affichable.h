@@ -13,6 +13,8 @@ const std::string violet_noir("\033[0;35m");
 
 const std::string reset("\033[0m");
 
+//mettre les couleurs dans un map<string, string>, mais plus facile à utiliser comme ça
+
 class Affichable 
 {
 public:
