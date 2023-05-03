@@ -130,6 +130,7 @@
     <ClCompile Include="Reine.cpp" />
     <ClCompile Include="Roi.cpp" />
     <ClCompile Include="Strategie.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="Tour.cpp" />
     <ClCompile Include="TourDeJeu.cpp" />
   </ItemGroup>

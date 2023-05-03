@@ -3,7 +3,6 @@
 #include <iomanip>
 #include "GestionnairePartie.h"
 #include "ControleurPlateau.h"
-#include "ChessBoard.h"
 #include <QApplication>
 
 
@@ -46,7 +45,7 @@ int main(int argc, char *argv[])
 	Plateau plateau = Plateau();
 	GestionnairePartie gestionnaire = GestionnairePartie(&plateau);
 	ChessBoard board = ChessBoard(&status, &gestionnaire); //interface graphique
-	ControleurPlateau controllerPlateau(&plateau, &gestionnaire);
+	ControleurPlateau controllerPlateau(&plateau, &gestionnaire, &board);
 
 	plateau.afficher();
 	board.show();

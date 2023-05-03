@@ -231,6 +231,7 @@ void ChessBoard::setStatusText(std::string status) {
 void ChessBoard::selectConfig() {
 	//std::cout << "we selected : " << positionsList->currentIndex() << std::endl;
 	emit OnConfigSelected(positionsList->currentIndex());
+	resetUI();
 }
 
 void ChessBoard::show() {
