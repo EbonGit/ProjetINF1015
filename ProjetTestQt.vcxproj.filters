@@ -76,9 +76,6 @@
     <ClCompile Include="ChessBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuditeurVue.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Reine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -118,9 +115,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Reine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AuditeurVue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gestionnaire.h">

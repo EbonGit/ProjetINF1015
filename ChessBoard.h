@@ -8,11 +8,12 @@
 #include <QComboBox>
 
 #include "CaseGraphique.h"
-#include "AuditeurVue.h"
 #include "GestionnaireStatus.h"
 
 #include <iostream>
 #include <cppitertools/range.hpp>
+
+#include "Gestionnaire.h"
 
 
 class ChessBoard : public QMainWindow
@@ -20,21 +21,23 @@ class ChessBoard : public QMainWindow
 	Q_OBJECT;
 
 public:
-	ChessBoard(GestionnaireStatus* p, QWidget* parent = nullptr);
+	ChessBoard(GestionnaireStatus* p, Gestionnaire* g, QWidget* parent = nullptr);
 	~ChessBoard() override = default;
 
 	CaseGraphique* nouvelleCase(int);
 	QButtonGroup* groupeBoutons;
 
+	void show();
+
 	void resetUI();
 	void deplacerPieces(int, int);
-	void setAuditeur(AuditeurVue* av) { auditeur_ = av; };
 	void selectConfig();
 
 private:
 	std::vector<CaseGraphique*> cases;
-	AuditeurVue* auditeur_ = nullptr;
 	GestionnaireStatus* status_ = nullptr;
+	Plateau* plateau_;
+	Gestionnaire* gestionnairePartie_;
 	QLabel* statusLabel = nullptr;
 	QComboBox* positionsList = nullptr;
 

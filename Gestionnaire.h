@@ -9,10 +9,7 @@ class Gestionnaire
 public:
 	//constructeur
 	Gestionnaire() = default;
-	Gestionnaire(Plateau * plateau, GestionnaireStatus* p) {
-		plateau_ = plateau; 
-		status_ = p;
-	};
+	Gestionnaire(Plateau* plateau, GestionnaireStatus* p);
 	virtual ~Gestionnaire() {};
 
 	//getter setter
@@ -31,12 +28,12 @@ public:
 	//selection
 	virtual void selectionner(Case * c);
 	virtual void deselectionner() {
-		caseCourante_ = nullptr; 
+		caseCourante_ = nullptr;
 		string tour = tourDeJeu_.estBlanc() ? "Tour blanc" : "Tour noir";
 		status_->setStatus(tour);
 	};
 
-	//ddeplacement
+	//deplacement
 	virtual void deplacer(Case * autre);
 	virtual bool verifierDeplacement(Case * autre);
 

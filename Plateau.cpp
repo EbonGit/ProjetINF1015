@@ -1,12 +1,11 @@
 #include "Plateau.h"
 
-Plateau::Plateau(ChessBoard* cb) {
-	init(cb);
-	setQt(cb);
+Plateau::Plateau() {
+	init();
 	chargerConfiguration(0);
 }
 
-void Plateau::init(ChessBoard* cb) {
+void Plateau::init() {
 	bool estBlanc = true;
 	for (int j = 0; j < 8; j++)
 	{
@@ -14,7 +13,6 @@ void Plateau::init(ChessBoard* cb) {
 		for (int i = 0; i < 8; i++)
 		{
 			Case c = Case(i, j, estBlanc);
-			c.setQt(cb);
 			ligne.push_back(c);
 			estBlanc = !estBlanc; //une case sur deux est blanche ou noire
 		}
@@ -25,7 +23,7 @@ void Plateau::init(ChessBoard* cb) {
 }
 
 void Plateau::afficher() {
-	qtGraphique->resetUI();
+	
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)

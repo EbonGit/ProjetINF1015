@@ -10,7 +10,7 @@ public:
 	ControleurPlateau(Plateau* p, Gestionnaire* g) { 
 		plateau_ = p; 
 		gestionnaire_ = g;
-		QObject::connect(p->getQt(), &ChessBoard::OnConfigSelected, this, &ControleurPlateau::OnConfigReceived);
+		//QObject::connect(p->getQt(), &ChessBoard::OnConfigSelected, this, &ControleurPlateau::OnConfigReceived);
 	};
 
 private:

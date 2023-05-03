@@ -12,6 +12,15 @@ QString generateStyleSheet(std::string bg_color, std::string hover_color) {
 	return sheet;
 }
 
+//convertir bool en string pour le nom du .png de la piece
+std::string bool_en_string(bool b)
+{
+	if (b) {
+		return "1";
+	}
+	return "0";
+}
+
 void ChessBoard::resetUI() {
 	for (int i : range(64)) {
 		if (cases[i]->get_side() == 1) {
@@ -20,8 +29,25 @@ void ChessBoard::resetUI() {
 		else {
 			cases[i]->setStyleSheet(generateStyleSheet("eeeed2", "bbbba5"));
 		}
+		int x = i % 8;
+		int y = i / 8;
+
+		if (gestionnairePartie_->grilleDeplacement[y][x] && gestionnairePartie_->verifierDeplacement(&(*plateau_)[y][x])) {
+			cases[i]->setStyleSheet(generateStyleSheet("388FFF", "2661AD"));
+		}
+
+		if (gestionnairePartie_->grilleEnnemi[y][x] && gestionnairePartie_->verifierDeplacement(&(*plateau_)[y][x])) {
+			cases[i]->setStyleSheet(generateStyleSheet("FA2E2E", "C42525"));
+		}
 		
-		cases[i]->setIcon(QIcon());
+		if ((*plateau_)[y][x].getPossedePiece()) {
+			Piece* piece = (*plateau_)[y][x].piece_;
+			string nomPiece = piece->nom() + bool_en_string(piece->estBlanc());
+			dessinerPiece(x, y, nomPiece);
+		}
+		else {
+			cases[i]->setIcon(QIcon());
+		}
 	}
 }
 
@@ -40,10 +66,12 @@ CaseGraphique* ChessBoard::nouvelleCase(int side) {
 	return case_graphique;
 }
 
-ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
+ChessBoard::ChessBoard(GestionnaireStatus* p, Gestionnaire* g, QWidget* parent) :
 	QMainWindow(parent)
 {
 	status_ = p;
+	gestionnairePartie_ = g;
+	plateau_ = gestionnairePartie_->getPlateau();
 	auto widgetPrincipal = new QWidget(this);
 	auto layoutPrincipal = new QVBoxLayout(widgetPrincipal);
 	
@@ -104,6 +132,7 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, QWidget* parent) :
 
 	setCentralWidget(widgetPrincipal);
 	setWindowTitle("ChessBoard");
+
 }
 
 // Doit appeller la fonction correpondante sur le controlleur
@@ -111,7 +140,9 @@ void ChessBoard::selectionnerCase(int id) {
 	int x = id % 8;
 	int y = id / 8;
 	std::cout << "(" << x << ", " << y << ")" << std::endl;
-	auditeur_->cliquer(x, y);
+	gestionnairePartie_->selectionner(&(*plateau_)[y][x]);
+
+	resetUI();
 }
 
 // color = 1 peut bouger, color = 0 ne peut pas, color = 2 peut manger
@@ -181,4 +212,9 @@ void ChessBoard::setStatusText(std::string status) {
 void ChessBoard::selectConfig() {
 	//std::cout << "we selected : " << positionsList->currentIndex() << std::endl;
 	emit OnConfigSelected(positionsList->currentIndex());
+}
+
+void ChessBoard::show() {
+	QWidget::show();
+	resetUI();
 }

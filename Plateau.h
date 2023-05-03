@@ -7,10 +7,10 @@ class Plateau :
 {
 
 public:
-    Plateau(ChessBoard*);
+    Plateau();
+    void init();
     void afficher() override;
     vector<vector<Case>>& get();
-    void init(ChessBoard*);
     vector<Case>& operator[](int i) { return cases_[i]; };
     void viderPlateau();
     void chargerConfiguration(int);

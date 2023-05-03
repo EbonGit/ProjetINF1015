@@ -2,15 +2,6 @@
 
 using iter::range;
 
-//convertir bool en string pour le nom du .png de la piece
-std::string bool_en_string(bool b)
-{
-	if (b) {
-		return "1";
-	}
-	return "0";
-}
-
 Case::Case(int pos_x, int pos_y, bool estBlanc) {
 	x = pos_x;
 	y = pos_y;
@@ -95,18 +86,15 @@ vector<pair<int, int>> Case::coordonnees_points_entiers_droite(const Case& c1) {
 
 void Case::posseder(Piece* ptr) { 
 	piece_ = ptr; 
-	piece_->setQt(getQt());
 	possedePiece_ = true;
 }
 
 void Case::deposseder() { 
-	piece_->setQt(nullptr);
 	piece_ = nullptr; 
 	possedePiece_ = false;
 }
 
 void Case::reset() {
-	piece_->setQt(nullptr);
 	delete piece_;
 	piece_ = nullptr;
 	possedePiece_ = false;
@@ -115,8 +103,7 @@ void Case::reset() {
 void Case::afficher() {
 	if (possedePiece_) {
 		piece_->afficher(); //afficher la pièce
-		string nomPiece = piece_->nom() + bool_en_string(piece_->estBlanc());
-		qtGraphique->dessinerPiece(x, y, nomPiece);
+	
 	}
 	else {
 		std::cout << estBlanc() << " ";

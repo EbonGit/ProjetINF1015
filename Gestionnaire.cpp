@@ -1,18 +1,54 @@
 #include "Gestionnaire.h"
 #include "Affichable.h"
 
+Gestionnaire::Gestionnaire(Plateau* plateau, GestionnaireStatus* p) {
+	plateau_ = plateau;
+	status_ = p;
+
+	grilleBool temp;
+	for (int i = 0; i < 8; i++)
+	{
+		vector<bool> ligne;
+		for (int j = 0; j < 8; j++)
+		{
+			ligne.push_back(false);
+		}
+		temp.push_back(ligne);
+	}
+	grilleStrategie = temp;
+	grilleEnnemi = temp;
+	grilleDeplacement = temp;
+};
+
 //si la case possède une piece et la piece de la couleur du tour
 void Gestionnaire::selectionner(Case* c) {
+	
+	if (caseCourante_ != nullptr) {
+		deplacer(c);
+
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				grilleDeplacement[i][j] = false;
+				grilleEnnemi[i][j] = false;
+				grilleStrategie[i][j] = false;
+			}
+		}
+		return;
+	}
+	
 	if (c->getPossedePiece() && (tourDeJeu_.estBlanc() == c->piece_->estBlanc())) {
 		caseCourante_ = c;
 		appliquerStrategie();
 		afficherGrille();
-		c->getQt()->modifierCase((c->y * 8 + c->x), "4E95F2", "12337A");
 	}
 	else {
 		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
 		status_->sendMessage("Attention", "impossible de selectionner case vide || pas le tour de cette couleur");
 	}
+
+	
 };
 
 void Gestionnaire::appliquerStrategie() {
@@ -59,9 +95,8 @@ void Gestionnaire::afficherGrille() {
 
 		for (int j = 0; j < 8; j++) //afficher grilleDeplacement
 		{
-			if (grilleDeplacement[i][j] && verifierDeplacement(&plateau_->operator[](i)[j])) {
+			if (grilleDeplacement[i][j] && verifierDeplacement(&(*plateau_)[i][j])) {
 				std::cout << bleu_noir;
-				getPlateau()->getQt()->modifierCase((i * 8 + j), "4E95F2", "12337A");
 			}
 			cout << grilleDeplacement[i][j] << reset << " ";
 		}
@@ -72,7 +107,6 @@ void Gestionnaire::afficherGrille() {
 		{
 			if (grilleEnnemi[i][j] && verifierDeplacement(&plateau_->operator[](i)[j])) {
 				std::cout << rouge_noir;
-				getPlateau()->getQt()->modifierCase((i * 8 + j), "FF1100", "BF0F02");
 			}
 			cout << grilleEnnemi[i][j] << reset << " ";
 		}
