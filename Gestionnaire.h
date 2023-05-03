@@ -61,5 +61,8 @@ private:
 	bool EstEchecB_ = false;
 	bool EstEchecN_ = false;
 
+protected:
+	bool sacrifice_ = false;
+
 };
 

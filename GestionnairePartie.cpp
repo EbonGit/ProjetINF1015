@@ -17,6 +17,8 @@ void GestionnairePartie::viderEchec() {
 }
 
 void GestionnairePartie::deplacer(Case* c) {
+	sacrifice_ = false;
+	sacrificeRoi(c);
 	Gestionnaire::deplacer(c);
 	testerEchec();
 }
@@ -44,6 +46,27 @@ void GestionnairePartie::testerEchec() {
 	viderEchec();
 }
 
+void GestionnairePartie::sacrificeRoi(Case* c) {
+	Piece* p = c->piece_;
+	
+	c->deposseder();
+	c->posseder(getCaseCourante()->piece_);
+	getCaseCourante()->deposseder();
 
+	testerEchec();
+	if ((getEchecB() && getTourDeJeu().estBlanc()) || (getEchecN() && !getTourDeJeu().estBlanc())) {
+		sacrifice_ = true;
+	}
+	else {
+		sacrifice_ = false;
+	}
+
+	getCaseCourante()->posseder(c->piece_);
+	c->deposseder();
+	if (p != nullptr) {
+		c->posseder(p);
+	}
+	
+}
 
 

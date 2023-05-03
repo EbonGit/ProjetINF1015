@@ -44,7 +44,6 @@ void Gestionnaire::selectionner(Case* c) {
 	}
 	else {
 		cout << "impossible de selectionner case vide || pas le tour de cette couleur" << endl;
-		//status_->sendMessage("Attention", "impossible de selectionner case vide || pas le tour de cette couleur");
 	}
 	
 	
@@ -161,6 +160,14 @@ void Gestionnaire::calculEnnemi() {
 void Gestionnaire::deplacer(Case* autre) {
 	if (caseCourante_ != nullptr) {
 
+		if (sacrifice_) {
+			cout << "pas possible sacrifice du roi" << endl;
+			deselectionner();
+			plateau_->afficher();
+			return;
+		}
+		
+		
 		if (!verifierDeplacement(autre)) {
 			cout << "pas possible obstruction" << endl;
 			deselectionner();
