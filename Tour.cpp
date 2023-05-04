@@ -9,10 +9,10 @@ Tour::Tour(bool estBlanc) : Piece(estBlanc) {
 
 void Tour::afficher() {
 	if (estBlanc_) {
-		std::cout << vert_blanc << "T" << reset << " ";
+		std::cout << vertBlanc << "T" << reset << " ";
 	}
 	else {
-		std::cout << vert_noir << "T" << reset << " ";
+		std::cout << vertNoir << "T" << reset << " ";
 	}
 
 };

@@ -7,10 +7,10 @@ Plateau::Plateau() {
 
 void Plateau::init() {
 	bool estBlanc = true;
-	for (int j = 0; j < 8; j++)
+	for (int j = 0; j < nombreCaseColonne; j++)
 	{
 		vector<Case> ligne;
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < nombreCaseLigne; i++)
 		{
 			Case c = Case(i, j, estBlanc);
 			ligne.push_back(c);
@@ -24,9 +24,9 @@ void Plateau::init() {
 
 void Plateau::afficher() {
 	
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseColonne; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseLigne; j++)
 		{
 			cases_[i][j].afficher();
 		}
@@ -75,9 +75,9 @@ void Plateau::chargerConfiguration(int config) {
 }
 
 void Plateau::viderPlateau() {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseColonne; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseLigne; j++)
 		{
 			if(cases_[i][j].getPossedePiece() == true)
 				cases_[i][j].reset();

@@ -37,19 +37,10 @@
     <ClCompile Include="Case.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Affichable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Plateau.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Piece.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Roi.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Strategie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fou.cpp">

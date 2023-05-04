@@ -24,6 +24,8 @@ const std::string couleurCaseBleuFonce = "2661AD";
 const std::string couleurCaseRougeClair = "FA2E2E";
 const std::string couleurCaseRougeFonce = "C42525";
 
+const int tailleCase = 60;
+
 
 class ChessBoard : public QMainWindow
 {

@@ -22,15 +22,15 @@ std::string bool_en_string(bool b)
 }
 
 void ChessBoard::resetUI() {
-	for (int i : range(64)) {
+	for (int i : range(nombreCase)) {
 		if (cases[i]->get_side() == 1) {
 			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseVertClair, couleurCaseVertFonce));
 		}
 		else {
 			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseBeigeClair, couleurCaseBeigeFonce));
 		}
-		int x = i % 8;
-		int y = i / 8;
+		int x = i % nombreCaseColonne;
+		int y = i / nombreCaseLigne;
 
 		if (gestionnairePartie_->grilleDeplacement[y][x] && gestionnairePartie_->verifierDeplacement(&(*plateau_)[y][x])) {
 			cases[i]->setStyleSheet(generateStyleSheet(couleurCaseBleuClair, couleurCaseBleuFonce));
@@ -72,8 +72,8 @@ void ChessBoard::resetStatus() {
 
 CaseGraphique* ChessBoard::nouvelleCase(int side) {
 	auto case_graphique = new CaseGraphique(side, this);
-	case_graphique->setFixedSize(60, 60);
-	case_graphique->setIconSize(QSize(60, 60));
+	case_graphique->setFixedSize(tailleCase, tailleCase);
+	case_graphique->setIconSize(QSize(tailleCase, tailleCase));
 
 	if (side == 1) {
 		case_graphique->setStyleSheet(generateStyleSheet(couleurCaseVertClair, couleurCaseVertFonce));
@@ -110,12 +110,12 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, Gestionnaire* g, QWidget* parent) 
 	grid_layout->setSpacing(0);
 	groupeBoutons = new QButtonGroup(this);
 
-	for (int i : range(8)) {
+	for (int i : range(nombreCaseColonne)) {
 		std::vector<CaseGraphique*> v;
-		for (int j : range(8)) {
+		for (int j : range(nombreCaseColonne)) {
 			int side = (i + j) % 2 == 0 ? 1 : 0;
 			auto case_graphique = nouvelleCase(side);
-			groupeBoutons->addButton(case_graphique, i * 8 + j); // L'ID du bouton est i (doit être un entier).
+			groupeBoutons->addButton(case_graphique, i * nombreCaseColonne + j); // L'ID du bouton est i (doit être un entier).
 			grid_layout->addWidget(case_graphique, i, j, 1, 1);
 			cases.push_back(case_graphique);
 		}
@@ -155,8 +155,8 @@ ChessBoard::ChessBoard(GestionnaireStatus* p, Gestionnaire* g, QWidget* parent) 
 
 // Doit appeller la fonction correpondante sur le controlleur
 void ChessBoard::selectionnerCase(int id) {
-	int x = id % 8;
-	int y = id / 8;
+	int x = id % nombreCaseColonne;
+	int y = id / nombreCaseLigne;
 	std::cout << "(" << x << ", " << y << ")" << std::endl;
 	gestionnairePartie_->selectionner(&(*plateau_)[y][x]);
 
@@ -169,7 +169,7 @@ void ChessBoard::modifierCase(int id, std::string color1, std::string color2) {
 }
 
 void ChessBoard::dessinerPiece(int x, int y, std::string piece) {
-	int id = x + y * 8;
+	int id = x + y * nombreCaseColonne;
 	QString path = "./chess_maestro_bw/";
 	path.append(piece);
 	path.append(".png");

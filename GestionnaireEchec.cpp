@@ -14,9 +14,9 @@ void GestionnaireEchec::selectionner(Case* c) {
 
 //ajouter methode qui test chaque case mangeable
 void GestionnaireEchec::tester() {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseLigne; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseColonne; j++)
 		{
 			if (grilleEnnemi[i][j]) {
 				if (getPlateau()->operator[](i)[j].piece_->nom() == "Roi" && verifierDeplacement(&getPlateau()->operator[](i)[j])) {//est Roi adverse

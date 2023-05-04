@@ -9,10 +9,10 @@ Reine::Reine(bool estBlanc) : Piece(estBlanc) {
 
 void Reine::afficher() {
 	if (estBlanc_) {
-		std::cout << violet_blanc << "Q" << reset << " ";
+		std::cout << violetBlanc << "Q" << reset << " ";
 	}
 	else {
-		std::cout << violet_noir << "Q" << reset << " ";
+		std::cout << violetNoir << "Q" << reset << " ";
 	}
 
 };

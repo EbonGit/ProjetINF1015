@@ -4,6 +4,8 @@
 
 
 using grilleBool = vector<vector<bool>>;
+
+
 class Gestionnaire 
 {
 public:

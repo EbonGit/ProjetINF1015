@@ -2,6 +2,10 @@
 #include "Case.h"
 #include <vector>
 
+const int nombreCaseLigne = 8;
+const int nombreCaseColonne = 8;
+const int nombreCase = 64;
+
 class Plateau :
     public Affichable
 {

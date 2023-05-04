@@ -9,10 +9,10 @@ Fou::Fou(bool estBlanc) : Piece(estBlanc) {
 
 void Fou::afficher() {
 	if (estBlanc_) {
-		std::cout << rouge_blanc << "F" << reset << " ";
+		std::cout << rougeBlanc << "F" << reset << " ";
 	}
 	else {
-		std::cout << rouge_noir << "F" << reset << " ";
+		std::cout << rougeNoir << "F" << reset << " ";
 	}
 
 };

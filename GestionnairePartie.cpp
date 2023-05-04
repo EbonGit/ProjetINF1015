@@ -29,9 +29,9 @@ void GestionnairePartie::testerEchec() {
 	setEchecB(false);
 	setEchecN(false);
 	
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseLigne; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseColonne; j++)
 		{
 			if (getPlateau()->operator[](i)[j].getPossedePiece()) { //considere unqiuement les cases avec des pièces
 				ajoutEchec(&getPlateau()->operator[](i)[j]);

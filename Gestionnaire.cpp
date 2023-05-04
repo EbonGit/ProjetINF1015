@@ -5,10 +5,10 @@ Gestionnaire::Gestionnaire(Plateau* plateau) {
 	plateau_ = plateau;
 
 	grilleBool temp;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseLigne; i++)
 	{
 		vector<bool> ligne;
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseColonne; j++)
 		{
 			ligne.push_back(false);
 		}
@@ -25,9 +25,9 @@ void Gestionnaire::selectionner(Case* c) {
 	if (caseCourante_ != nullptr) {
 		deplacer(c);
 
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < nombreCaseLigne; i++)
 		{
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < nombreCaseColonne; j++)
 			{
 				grilleDeplacement[i][j] = false;
 				grilleEnnemi[i][j] = false;
@@ -53,10 +53,10 @@ void Gestionnaire::appliquerStrategie() {
 	if (caseCourante_->getPossedePiece()) {
 
 		grilleBool temp;
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < nombreCaseLigne; i++)
 		{
 			vector<bool> ligne;
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < nombreCaseColonne; j++)
 			{
 				if (caseCourante_->piece_->getStrat().appliquer(caseCourante_->x, caseCourante_->y, j, i)) {
 					ligne.push_back(true);
@@ -79,32 +79,32 @@ void Gestionnaire::appliquerStrategie() {
 //affichage juste pour la console
 void Gestionnaire::afficherGrille() {
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseLigne; i++)
 	{
-		for (int j = 0; j < 8; j++) //afficher grilleStrategie
+		for (int j = 0; j < nombreCaseColonne; j++) //afficher grilleStrategie
 		{
 			if (grilleStrategie[i][j]) {
-				std::cout << vert_noir;
+				std::cout << vertNoir;
 			}
 			cout << grilleStrategie[i][j] << reset << " ";
 		}
 
 		std::cout << "    ";
 
-		for (int j = 0; j < 8; j++) //afficher grilleDeplacement
+		for (int j = 0; j < nombreCaseColonne; j++) //afficher grilleDeplacement
 		{
 			if (grilleDeplacement[i][j] && verifierDeplacement(&(*plateau_)[i][j])) {
-				std::cout << bleu_noir;
+				std::cout << bleuNoir;
 			}
 			cout << grilleDeplacement[i][j] << reset << " ";
 		}
 
 		std::cout << "    ";
 
-		for (int j = 0; j < 8; j++) //afficher grilleEnnemi
+		for (int j = 0; j < nombreCaseColonne; j++) //afficher grilleEnnemi
 		{
 			if (grilleEnnemi[i][j] && verifierDeplacement(&plateau_->operator[](i)[j])) {
-				std::cout << rouge_noir;
+				std::cout << rougeNoir;
 			}
 			cout << grilleEnnemi[i][j] << reset << " ";
 		}
@@ -116,10 +116,10 @@ void Gestionnaire::afficherGrille() {
 
 void Gestionnaire::calculDeplacement() {
 	grilleBool temp;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseLigne; i++)
 	{
 		vector<bool> ligne;
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseColonne; j++)
 		{
 			if (grilleStrategie[i][j] && !plateau_->operator[](i)[j].getPossedePiece()) { //si la case ne possède pas de piece et n'a pas de de ligne de vue obstrué
 				ligne.push_back(true);
@@ -135,10 +135,10 @@ void Gestionnaire::calculDeplacement() {
 
 void Gestionnaire::calculEnnemi() {
 	grilleBool temp;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < nombreCaseLigne; i++)
 	{
 		vector<bool> ligne;
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < nombreCaseColonne; j++)
 		{
 			if (grilleStrategie[i][j] && !grilleDeplacement[i][j]) { //si la case est ennemi cad la case possede une pièce de la couleur opposé à la piece de la case courante
 				if (caseCourante_->piece_->estBlanc() != plateau_->operator[](i)[j].piece_->estBlanc()) {

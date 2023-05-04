@@ -9,10 +9,10 @@ Roi::Roi(bool estBlanc) : Piece(estBlanc) {
 
 void Roi::afficher() {
 	if (estBlanc_) {
-		std::cout << bleu_blanc << "R" << reset << " ";
+		std::cout << bleuBlanc << "R" << reset << " ";
 	}
 	else {
-		std::cout << bleu_noir << "R" << reset << " ";
+		std::cout << bleuNoir << "R" << reset << " ";
 	}
 
 };
